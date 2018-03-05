@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 ruby '2.4.3'
 
 gem 'figaro'
@@ -9,6 +9,9 @@ gem 'rails', '5.1.5'
 gem 'redis'
 gem 'devise'
 gem 'pundit'
+gem 'httparty'
+gem 'json'
+gem 'cloudinary'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'

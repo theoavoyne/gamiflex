@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   get '/profile', to: "pages#profile"
   get '/games/:id', to: "pages#games"
 
+  resources :gamestates, only: [ :create, :destroy ]
+
 end
