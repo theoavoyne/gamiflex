@@ -1,3 +1,4 @@
+<!-- Banner -->
 <div class="banner" style="background-image: url('https://i.imgur.com/1gwHMNR.jpg');">
   <div class="banner-content">
     <h1>Welcome to Gamiflex</h1>
@@ -8,13 +9,26 @@
   </div>
 </div>
 
+
 <!-- Game Carousel -->
 <div class="carousel-container" id="carousel-container">
   <h2><strong>Tell us the games you like | Minimum 5</strong></h2>
 </div>
 
-<div class="signup-form" id="signup-form">
-  <div class="form">
-    <%= link_to t(".sign_up", default: "I wanna see my result!"), new_user_registration_path, class: "btn-submit" %>
+
+<!-- Sign-up form to appear once the algorithm as calculated a result -->
+<div class="signup-form">
+  <div class="row">
+    <div class="col-sm-6">
+      <h1>INSERT LOADING ANIMATION HERE</h1>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-container">
+        <h1>RENDER FORM HERE</h1>
+        <hr>
+        <%= link_to t(".sign_up", default: "I wanna see my result!"), new_user_registration_path, class: "btn-submit" %>
+      </div>
+    </div>
   </div>
 </div>
+
