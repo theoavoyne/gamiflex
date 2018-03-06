@@ -1,0 +1,31 @@
+.btn-green {
+  font-size: 28px;
+  font-weight: bold;
+  background-color: $green-btn;
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  padding: 20px 50px;
+  transition: all 0.5s;
+  &:hover {
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    box-shadow: 0 1px 5px 0 rgba(0,0,0, 0.1);
+  }
+}
+
+.btn-submit {
+  font-weight: bold;
+  padding: 10px 30px;
+  background-color: $green-btn;
+  color: white;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all 0.3s;
+  &:hover {
+    opacity: 0.9;
+    color: white;
+    text-decoration: none;
+  }
+}

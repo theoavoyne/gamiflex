@@ -1,1 +1,45 @@
 // Specific CSS for your home-page
+.banner {
+  color: whitesmoke;
+  text-align: center;
+  height: 90vh;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.5);
+  h1 {
+    font-size: 70px;
+    font-weight: bold;
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  }
+  p {
+    font-size: 25px;
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+    opacity: 0.8;
+    margin-bottom: 40px;
+  }
+}
+
+.btn-container {
+  height: 80px;
+}
+
+.carousel-container {
+  background-color: #F2F2F2;
+  height: 500px;
+  padding: 20px 50px;
+  h2 {
+    font-size: 28px;
+  }
+}
+
+.signup-form {
+  display: flex;
+  justify-content: space-around;
+  background-color: #96ACB7;
+  height: 400px;
+  padding: 50px 60px;
+}
