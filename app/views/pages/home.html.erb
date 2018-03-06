@@ -1,2 +1,20 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: url('https://i.imgur.com/1gwHMNR.jpg');">
+  <div class="banner-content">
+    <h1>Welcome to Gamiflex</h1>
+    <p>We find your next game, so you don't have to! :D</p>
+    <div class="btn-container">
+      <a href="#carousel-container" class="btn-green">GET STARTED</a>
+    </div>
+  </div>
+</div>
+
+<!-- Game Carousel -->
+<div class="carousel-container" id="carousel-container">
+  <h2><strong>Tell us the games you like | Minimum 5</strong></h2>
+</div>
+
+<div class="signup-form" id="signup-form">
+  <div class="form">
+    <%= link_to t(".sign_up", default: "I wanna see my result!"), new_user_registration_path, class: "btn-submit" %>
+  </div>
+</div>
