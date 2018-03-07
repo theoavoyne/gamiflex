@@ -1,10 +1,11 @@
-<% game = IGDB.find(@game_id)%>
+<% game = @game %>
 <p>Game id: <%= game[:game_id] %></p>
 <p>Name: <%= game[:name] %></p>
 <p>Summary: <%= game[:summary] %></p>
 <p>Release date: <%= game[:release_date] %></p>
 <p>Suggestions: <%= game[:suggestions] %></p>
-<p>Rating: <%= game[:rating] %></p>
-<p>Platform: <%= game[:platform] %></p>
-<p>Image:</p>
-<img src="https:<%= game[:photo_url] %>" alt="">
+<p>Platforms: <%= game[:platforms] %></p>
+<p>Genres: <%= game[:genres] %></p>
+<p>Publishers: <%= game[:publishers] %></p>
+<p>Developers: <%= game[:developers] %></p>
+<p>Image:<%= game[:photo] %></p>

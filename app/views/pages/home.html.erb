@@ -1,2 +1,22 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Home</h1>
+
+<% if policy(Game).suggest? %>
+  <% if @empty %>
+    <p>Not enough data, sorry!</p>
+  <% else %>
+    <% first_suggestion = @suggestion.first %>
+    <p>You should play this game</p>
+    <p><%= first_suggestion.name %></p>
+    <p>ID: <%= first_suggestion.game_id %></p>
+    <%= cl_image_tag first_suggestion.photo %>
+    <%= link_to "See more", game_path(id: first_suggestion.game_id), class: " btn btn-primary" %>
+
+    <p>You played this game already?</p>
+    <%= simple_form_for @state, url: game_states_path(:game_id => first_suggestion.game_id), method: :post do |f| %>
+      <%= f.button :submit, "I did like it", class: 'btn btn-primary' %>
+    <% end %>
+    <%= simple_form_for @state, url: game_states_path(:game_id => first_suggestion.game_id, state: "dislike"), method: :post do |f| %>
+      <%= f.button :submit, "I didn't like it", class: 'btn btn-primary' %>
+    <% end %>
+  <% end %>
+<% end %>

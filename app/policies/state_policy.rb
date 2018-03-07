@@ -1,4 +1,4 @@
-class GamestatePolicy < ApplicationPolicy
+class StatePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope
