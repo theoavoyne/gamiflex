@@ -212,7 +212,7 @@ PLATFORMS
 
 DEPENDENCIES
   autoprefixer-rails
-  bootstrap-sass (~> 3.3)
+  bootstrap-sass
   cloudinary
   devise
   figaro

@@ -1,0 +1,16 @@
+.main-btn {
+  color: white;
+  background-color: #00A9A5;
+  border-radius: 3px;
+  padding: 8px 20px;
+  transition: background-color 0.3s;
+  &:hover {
+    color: white;
+    text-decoration: none;
+    background-color: #049b94;
+  }
+}
+
+.last-link {
+  padding-right: 40px;
+}

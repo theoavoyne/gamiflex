@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  get '/profile', to: "pages#profile"
+  get '/profile', to: "pages#profile", as: 'profile'
   get '/games/:id', to: "pages#games", as: 'game'
 
   resources :states, only: [ :create, :destroy ]
