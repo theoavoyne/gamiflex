@@ -4,8 +4,4 @@ class GamePolicy < ApplicationPolicy
       scope
     end
   end
-
-  def suggest?
-    user
-  end
 end

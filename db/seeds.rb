@@ -6,32 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-State.create!({
-  user: User.last,
-  game_id: "27081",
-  state: "like"
-})
+top_30 = %w(233 987 559 1628 6036 8173 533 1942 1020 20 239 127 501 72 7331 974 27081 1905 7360 121 2691 529 12517 11198 4754 36872 1331 2350  9061 434)
 
-State.create!({
-  user: User.last,
-  game_id: "27082",
-  state: "like"
-})
-
-State.create!({
-  user: User.last,
-  game_id: "27083",
-  state: "like"
-})
-
-State.create!({
-  user: User.first,
-  game_id: "27081",
-  state: "like"
-})
-
-State.create!({
-  user: User.first,
-  game_id: "27080",
-  state: "like"
-})
+50.times do
+  State.create({
+    user: User.all.sample,
+    game_id: top_30.sample,
+    state: "like"
+  })
+end

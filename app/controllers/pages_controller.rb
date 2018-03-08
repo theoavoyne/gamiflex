@@ -2,12 +2,10 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home, :games ]
 
   def home
-    if policy(Game).suggest?
-      if current_user.suggestion.length == 0
-        @empty = true
-      else
+    if user_signed_in?
+      if policy(current_user).suggest?
+        @suggest = true
         @suggestion = current_user.suggestion
-        @empty = false
         @state = State.new
       end
     end

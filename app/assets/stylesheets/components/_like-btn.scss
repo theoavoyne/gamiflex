@@ -1,0 +1,30 @@
+.like {
+  display: flex;
+  border-radius: 50%;
+  border: 2px solid #23BA69;
+  justify-content: space-around;
+  align-items: center;
+  height: 60px;
+  width: 60px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-right: 10px;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.dislike {
+  display: flex;
+  border-radius: 50%;
+  border: 2px solid #F24236;
+  justify-content: space-around;
+  align-items: center;
+  height: 60px;
+  width: 60px;
+  transition: all 0.3s;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.7;
+  }
+}

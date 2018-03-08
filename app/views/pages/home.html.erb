@@ -1,22 +1,51 @@
-<h1>Home</h1>
-
-<% if policy(Game).suggest? %>
-  <% if @empty %>
-    <p>Not enough data, sorry!</p>
-  <% else %>
-    <% first_suggestion = @suggestion.first %>
-    <p>You should play this game</p>
-    <p><%= first_suggestion.name %></p>
-    <p>ID: <%= first_suggestion.game_id %></p>
-    <%= cl_image_tag first_suggestion.photo %>
-    <%= link_to "See more", game_path(id: first_suggestion.game_id), class: " btn btn-primary" %>
-
-    <p>You played this game already?</p>
-    <%= simple_form_for @state, url: game_states_path(:game_id => first_suggestion.game_id), method: :post do |f| %>
-      <%= f.button :submit, "I did like it", class: 'btn btn-primary' %>
-    <% end %>
-    <%= simple_form_for @state, url: game_states_path(:game_id => first_suggestion.game_id, state: "dislike"), method: :post do |f| %>
-      <%= f.button :submit, "I didn't like it", class: 'btn btn-primary' %>
-    <% end %>
-  <% end %>
+<div id="landing-band" style="background-image: linear-gradient(-225deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('/assets/photo5.jpeg')">
+  <div id="landing-content">
+    <h1>Gamiflex</h1>
+    <h2>The Internet's most powerful algorithm for video game suggestions</h2>
+    <div id="landing-button">Get Started</div>
+  </div>
+</div>
+<% if @suggest %>
+  <div class="row">
+    <div class="banner banner-even">
+      <div class="col-xs-12 col-md-6">
+        <div class="game-content">
+          <div class="banner-text">
+            <h3 class="game-title">You'll like this game!</h3>
+            <p class="game-summary"><%= @suggestion.first.summary %></p>
+            <p class="game-recommend">97% Recommend this game</p>
+            <p class="game-friend">Including your friend <span class="friend-name">Olivier Riccini</span></p>
+            <%= link_to "See more", game_path(id: @suggestion.first.game_id), class: "main-btn" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-6">
+        <div class="img-content">
+          <div class="game-image" style="background-image: url('<%= cl_image_path @suggestion.first.photo %>'); height: 50vh; width: calc((50vh * <%= @suggestion.first.photo_width %>) / <%= @suggestion.first.photo_height %>);">
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="banner banner-odd">
+      <div class="col-xs-12 col-md-6">
+        <div class="img-content">
+          <div class="game-image" style="background-image: url('<%= cl_image_path @suggestion.second.photo %>'); height: 50vh; width: calc((50vh * <%= @suggestion.second.photo_width %>) / <%= @suggestion.second.photo_height %>);">
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-6">
+        <div class="game-content">
+          <div class="banner-text odd">
+            <h3 class="game-title">You'll like this game!</h3>
+            <p class="game-summary"><%= @suggestion.second.summary %></p>
+            <p class="game-recommend">97% Recommend this game</p>
+            <p class="game-friend odd">Including your friend <span class="friend-name">Olivier Riccini</span></p>
+            <%= link_to "See more", game_path(id: @suggestion.second.game_id), class: "main-btn" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>

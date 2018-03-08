@@ -4,6 +4,7 @@
   border-radius: 3px;
   padding: 8px 20px;
   transition: background-color 0.3s;
+  cursor: pointer;
   &:hover {
     color: white;
     text-decoration: none;
@@ -14,3 +15,4 @@
 .last-link {
   padding-right: 40px;
 }
+

@@ -1,0 +1,8 @@
+<%= link_to "See more", game_path(id: @suggestion.first.game_id), class: " btn btn-primary" %>
+<p>You played this game already?</p>
+<%= simple_form_for @state, url: game_states_path(:game_id => @suggestion.first.game_id), method: :post do |f| %>
+  <%= f.button :submit, "I did like it", class: 'btn btn-primary' %>
+<% end %>
+<%= simple_form_for @state, url: game_states_path(:game_id => @suggestion.first.game_id, state: "dislike"), method: :post do |f| %>
+  <%= f.button :submit, "I didn't like it", class: 'btn btn-primary' %>
+<% end %>

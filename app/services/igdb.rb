@@ -25,12 +25,14 @@ class IGDB
         name: response["name"],
         summary: response["summary"],
         release_date: response["release_dates"] ? response["release_dates"][0]["human"] : nil,
-        suggestions: response["games"] ? response["games"].join(";") : nil,
-        platforms: response["platforms"] ? find_platform(response["platforms"]).join(";") : nil,
+        suggestions: join_if_exists(response["games"]),
+        platforms: join_if_exists(find_platform(response["platforms"])),
         photo: api_response["public_id"],
-        genres: response["genres"] ? find_genre(response["genres"]).join(";") : nil,
-        publishers: response["publishers"] ? find_companies(response["publishers"]).join(";") : nil,
-        developers: response["developers"] ? find_companies(response["developers"]).join(";") : nil,
+        photo_width: nil_if_not_exists(response["cover"]["width"]),
+        photo_height: nil_if_not_exists(response["cover"]["height"]),
+        genres: join_if_exists(find_genre(response["genres"])),
+        publishers: join_if_exists(find_companies(response["publishers"])),
+        developers: join_if_exists(find_companies(response["developers"]))
       }
 
       # Storing Game in DB
@@ -40,6 +42,7 @@ class IGDB
     private
 
     def find_platform(platforms_id)
+      return nil unless platforms_id
       output = []
       platforms_id.each do |platform|
 
@@ -58,6 +61,7 @@ class IGDB
     end
 
     def find_genre(genres_id)
+      return nil unless genres_id
       output = []
 
       genres_id.each do |genre|
@@ -77,6 +81,7 @@ class IGDB
     end
 
     def find_companies(companies_id)
+      return nil unless companies_id
       output = []
       companies_id.each do |companie|
 
@@ -96,6 +101,14 @@ class IGDB
 
     def not_found
       raise ActionController::RoutingError.new('Not Found')
+    end
+
+    def nil_if_not_exists(expression)
+      expression ? expression : nil
+    end
+
+    def join_if_exists(expression)
+      expression ? expression.join(";") : nil
     end
   end
 end
