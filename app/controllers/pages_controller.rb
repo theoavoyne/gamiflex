@@ -4,7 +4,6 @@ class PagesController < ApplicationController
   def home
     if user_signed_in?
       if policy(current_user).suggest?
-        @suggest = true
         @suggestion = current_user.suggestion
         @state = State.new
       end
