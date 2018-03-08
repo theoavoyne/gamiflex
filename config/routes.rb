@@ -4,13 +4,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   get '/profile', to: "pages#profile", as: 'profile'
-  get '/games/:id', to: "pages#games", as: 'game'
+  get '/mygames', to: "pages#mygames", as: 'mygames'
 
-  resources :states, only: [ :create, :destroy ]
-
-  # resources :games, only: [ :show ] do
-  #   resources :state, only: [ :create, :destroy ]
-  # end
-
-  post '/games/:game_id/state', to: 'states#create', as: 'game_states'
+  resources :games, only: [ :show ] do
+    resources :states, only: [ :create, :destroy ]
+  end
 end

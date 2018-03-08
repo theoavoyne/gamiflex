@@ -1,0 +1,15 @@
+<h1>The games I liked</h1>
+<ul>
+  <% current_user.states.where(state: "like").each do |state| %>
+    <li>
+      <%= state.game.name %>
+      <%= link_to("Remove", game_state_path(state.game, state), :method => :delete) %>
+    </li>
+  <% end %>
+</ul>
+<h1>The games I disliked</h1>
+<ul>
+  <% current_user.states.where(state: "dislike").each do |state| %>
+    <li><%= state.game.name %></li>
+  <% end %>
+</ul>

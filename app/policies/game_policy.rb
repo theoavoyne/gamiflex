@@ -4,4 +4,8 @@ class GamePolicy < ApplicationPolicy
       scope
     end
   end
+
+  def show?
+    true
+  end
 end

@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home, :games ]
+  skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
     if user_signed_in?
@@ -12,11 +12,8 @@ class PagesController < ApplicationController
   end
 
   def profile
-    @name = current_user.first_name
   end
 
-  def games
-    @id = params[:id]
-    @game = Game.find_with_igdb(@id)
+  def mygames
   end
 end

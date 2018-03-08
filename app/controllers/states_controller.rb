@@ -9,6 +9,11 @@ class StatesController < ApplicationController
   end
 
   def destroy
+    @state = State.find(params[:id])
+    authorize @state
+    @state.destroy
+
+    redirect_to mygames_path
   end
 
   private
