@@ -7,4 +7,16 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
+//= require rails-ujs
+//= require turbolinks
+//= require jquery
+//= require_tree .
+
+// alert('COUCOU');
+
+
 console.log('Hello World from Webpacker')
+
+// import "../carousel/slick.min";
+import "../carousel/carousel_customized";
+
