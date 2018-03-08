@@ -12,6 +12,7 @@ gem 'pundit'
 gem 'httparty'
 gem 'json'
 gem 'cloudinary'
+gem 'jquery-rails'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
