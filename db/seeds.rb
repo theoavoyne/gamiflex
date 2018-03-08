@@ -11,7 +11,7 @@ top_30 = %w(233 987 559 1628 6036 8173 533 1942 1020 20 239 127 501 72 7331 974 
 50.times do
   State.create({
     user: User.all.sample,
-    game_id: top_30.sample,
+    game: Game.find_with_igdb(top_30.sample),
     state: "like"
   })
 end

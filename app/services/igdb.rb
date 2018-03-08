@@ -21,7 +21,7 @@ class IGDB
       # Put response in the right format
       api_response = Cloudinary::Uploader.upload("https:" + response["cover"]["url"].gsub(/thumb/, "cover_big"))
       results = {
-        game_id: response["id"],
+        id: response["id"],
         name: response["name"],
         summary: response["summary"],
         release_date: response["release_dates"] ? response["release_dates"][0]["human"] : nil,

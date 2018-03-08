@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :states
+  has_many :games, through: :states
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

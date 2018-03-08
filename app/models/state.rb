@@ -1,5 +1,6 @@
 class State < ApplicationRecord
   belongs_to :user
+  belongs_to :game
 
   validates :user_id, presence: true
   validates :state, inclusion: { in: ["like", "dislike", "wishlist"] }

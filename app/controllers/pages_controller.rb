@@ -5,6 +5,7 @@ class PagesController < ApplicationController
     if user_signed_in?
       if policy(current_user).suggest?
         @suggestion = current_user.suggestion
+        @suggestion = nil if @suggestion == []
         @state = State.new
       end
     end
@@ -15,7 +16,7 @@ class PagesController < ApplicationController
   end
 
   def games
-    @game_id = params[:id]
-    @game = Game.find_with_igdb(@game_id)
+    @id = params[:id]
+    @game = Game.find_with_igdb(@id)
   end
 end

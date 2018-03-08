@@ -15,7 +15,7 @@
             <p class="game-summary"><%= @suggestion.first.summary %></p>
             <p class="game-recommend">97% Recommend this game</p>
             <p class="game-friend">Including your friend <span class="friend-name">Olivier Riccini</span></p>
-            <%= link_to "See more", game_path(id: @suggestion.first.game_id), class: "main-btn" %>
+            <%= link_to "See more", game_path(id: @suggestion.first.id), class: "main-btn" %>
           </div>
         </div>
       </div>
@@ -42,7 +42,7 @@
             <p class="game-summary"><%= @suggestion.second.summary %></p>
             <p class="game-recommend">97% Recommend this game</p>
             <p class="game-friend odd">Including your friend <span class="friend-name">Olivier Riccini</span></p>
-            <%= link_to "See more", game_path(id: @suggestion.second.game_id), class: "main-btn" %>
+            <%= link_to "See more", game_path(id: @suggestion.second.id), class: "main-btn" %>
           </div>
         </div>
       </div>
