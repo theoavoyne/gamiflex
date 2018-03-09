@@ -1,0 +1,14 @@
+<div class="slider-container">
+  <h2><strong>Tell us the games you like | Minimum 5</strong></h2>
+  <span id="nextArrow"></span>
+  <span id="prevArrow"></span>
+  <div id="slider" class="slider">
+    <% @games.each do |game| %>
+      <%= link_to game_states_path(@game, @state), :method => :post do %>
+        <div class="item-carousel">
+          <img src="<% game %>" alt="<% game %>">
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
