@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  mount_uploader :photo, PhotoUploader
   has_many :states
   has_many :games, through: :states
   # Include default devise modules. Others available are:

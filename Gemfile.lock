@@ -49,6 +49,10 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.3)
     byebug (10.0.0)
+    carrierwave (1.2.2)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
     cloudinary (1.8.3)
       aws_cf_signer
       rest-client
@@ -217,6 +221,7 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bootstrap-sass
+  carrierwave (~> 1.2)
   cloudinary
   devise
   figaro
