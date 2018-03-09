@@ -49,9 +49,6 @@
     </div>
   </div>
 <% elsif @games %>
-  <ul>
-    <% @games.each do |game| %>
-      <li><%= game.name %></li>
-    <% end %>
-  </ul>
+  <%= render 'shared/carousel', games: @games, state: @state, remaining: @remaining %>
 <% end %>
+

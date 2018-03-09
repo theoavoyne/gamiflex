@@ -15,6 +15,7 @@ class PagesController < ApplicationController
         @games = game_list.map do |game|
           Game.find_with_igdb(game)
         end
+        @remaining = 5 - current_user.states.where(state: 'like').length
       end
     end
   end

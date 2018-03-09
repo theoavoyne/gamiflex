@@ -8,7 +8,29 @@
 
 top_30 = %w(233 987 559 1628 6036 8173 533 1942 1020 20 239 127 501 72 7331 974 27081 1905 7360 121 2691 529 12517 11198 4754 36872 1331 2350  9061 434)
 
-50.times do
+
+User.create!({
+  first_name: "Leo",
+  last_name: "Thomas",
+  password: "shitty-password",
+  email: "leo@hotmail.com"
+})
+
+User.create!({
+  first_name: "Capy",
+  last_name: "Bara",
+  password: "elcapy-password",
+  email: "elcapy@hotmail.com"
+})
+
+User.create!({
+  first_name: "Mister",
+  last_name: "Bean",
+  password: "bean-password",
+  email: "bean@hotmail.com"
+})
+
+30.times do
   State.create({
     user: User.all.sample,
     game: Game.find_with_igdb(top_30.sample),
