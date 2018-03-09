@@ -5,7 +5,7 @@ class StatesController < ApplicationController
     authorize @state
     @state.save
 
-    redirect_to root_path
+    redirect_to game_path(@state.game)
   end
 
   def destroy
