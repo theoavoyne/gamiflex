@@ -9,4 +9,7 @@
 
 import "bootstrap";
 
+// import "../carousel/slick.min";
+import "../carousel/carousel";
+
 console.log('Hello World from Webpacker')
