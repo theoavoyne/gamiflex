@@ -7,8 +7,8 @@ const cards = document.querySelectorAll('.item-carousel');
 
 /* Implement Slick function */
 $('.slider').slick({
-  prevArrow: '#prevArrow',
-  nextArrow: '#nextArrow',
+  prevArrow: '#nextArrow',
+  nextArrow: '#prevArrow',
   slidesToShow: 6,
   slidesToScroll: 1,
   inifinite: true,

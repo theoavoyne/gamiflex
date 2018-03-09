@@ -1,13 +1,9 @@
 .slider-container {
   background-color: #F2F2F2;
-  height: 500px;
   padding: 20px 50px;
   position: relative;
   width: 1200px;
   margin: 0 auto;
-  h2 {
-    font-size: 28px;
-  }
 }
 
 .slider {
@@ -16,6 +12,11 @@
 
 .slick-slide {
   padding: 10px;
+}
+
+.slick-track {
+  display: flex;
+  align-items: center;
 }
 
 .item-carousel {
@@ -58,4 +59,10 @@
   width: 142px;
   top: 118px;
   right: 66px;
+}
+
+.title-selection {
+  margin-bottom: 35px;
+  font-size: 30px;
+  font-weight: 700;
 }
