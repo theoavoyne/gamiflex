@@ -1,0 +1,57 @@
+// Games page
+
+.wrapper {
+  padding: 0 80px;
+  margin-top: 50px;
+}
+
+.attribute-label {
+  font-weight: 700;
+}
+
+.show-name {
+  font-weight: 700;
+  font-size: 40px;
+  margin-top: 0;
+}
+
+.game-image.show {
+  margin: 25px auto;
+  margin-top: 0;
+  background-size: cover;
+}
+
+.left-col {
+  text-align: center;
+}
+
+.like-buttons {
+  display: flex;
+}
+
+.right-col {
+  padding: 0 40px 0 20px;
+}
+
+.show-published {
+  margin-bottom: 25px;
+  font-style: italic;
+}
+
+.show-platforms {
+  margin-bottom: 25px;
+}
+
+.show-genres {
+  margin-bottom: 25px;
+}
+
+.show-summary {
+  margin-bottom: 25px;
+  line-height: 170%;
+}
+
+.flex-button {
+  display: flex;
+  justify-content: space-around;
+}

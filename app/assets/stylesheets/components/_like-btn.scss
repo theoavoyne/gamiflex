@@ -14,6 +14,12 @@
   }
 }
 
+.like-link {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .dislike {
   display: flex;
   border-radius: 50%;
