@@ -15,7 +15,7 @@
     <% if user_signed_in? %>
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <img src="<%= cl_image_path(current_user.photo) %>" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+          <img src="<%= current_user.photo_url ? cl_image_path(current_user.photo) : "http://www.unixstickers.com/image/data/stickers/guyfawkes/guyfawkes.sh.png" %>" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to profile_path do %>
