@@ -1,14 +1,17 @@
 .main-btn {
   color: white;
+  font-weight: bold;
   background-color: #00A9A5;
   border-radius: 3px;
-  padding: 8px 20px;
-  transition: background-color 0.3s;
+  padding: 10px 20px;
+  transition: all 0.4s;
   cursor: pointer;
+  box-shadow: none;
   &:hover {
     color: white;
     text-decoration: none;
     background-color: #049b94;
+    box-shadow: 0px 3px 3px 1px rgba(0,0,0,0.3);
   }
 }
 
