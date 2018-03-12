@@ -25,4 +25,7 @@ class PagesController < ApplicationController
 
   def mygames
   end
+
+  def suggestions
+  end
 end
