@@ -73,6 +73,37 @@ class User < ApplicationRecord
     return final_list
   end
 
+  # prep new algorithm
+
+  def likes_in_common(user)
+    user_1 = self
+    user_2 = user
+
+    State.where(user: [user_1, user_2], state: "like").group(:game_id).count.count { |key, value| value == 2 }
+  end
+
+  def dislikes_in_common(user)
+    user_1 = self
+    user_2 = user
+
+    State.where(user: [user_1, user_2], state: "dislike").group(:game_id).count.count { |key, value| value == 2 }
+  end
+
+  def total_likes(user)
+    user_1 = self
+    user_2 = user
+
+    State.where(user: [user_1, user_2], state: "like").group(:game_id).count.length
+  end
+
+  def total_dislikes(user)
+    user_1 = self
+    user_2 = user
+
+    State.where(user: [user_1, user_2], state: "dislike").group(:game_id).count.length
+  end
+  # __________________
+
   private
 
   def find_user_played(state)
