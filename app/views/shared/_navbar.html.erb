@@ -19,7 +19,7 @@
         <%= link_to "My Games", mygames_path, class: "navbar-gamiflex-link" %>
       </div>
       <div class="navbar-gamiflex-item hidden-xs hidden-sm">
-        <%= link_to "Edit Profile", profile_path, class: "navbar-gamiflex-link" %>
+        <%= link_to "Edit Profile", edit_user_registration_path, class: "navbar-gamiflex-link" %>
       </div>
       <div class="navbar-gamiflex-item hidden-xs hidden-sm">
         <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "navbar-gamiflex-link" %>
@@ -33,7 +33,7 @@
             <li><a href="/"><i class="fas fa-gamepad"></i>&nbsp;&nbsp;My Next Game!</a></li>
             <hr>
             <li><%= link_to "My Games", mygames_path %></li>
-            <li><%= link_to "Edit Profile", profile_path %></li>
+            <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
             <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
           </ul>
         </div>
