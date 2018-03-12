@@ -8,24 +8,37 @@
   <!-- Right Navigation -->
   <div class="navbar-gamiflex-right">
 
-    <!-- Profile picture with dropdown list -->
+    <!-- Links to show on laptop/desktop -->
     <% if user_signed_in? %>
-      <div class="navbar-gamiflex-item">
+      <div class="navbar-gamiflex-item hidden-xs hidden-sm">
         <div class="btn-container">
-          <a href="/" class="main-btn"><i class="fas fa-gamepad"></i>&nbsp;&nbsp;Next Game!</a>
+          <a href="/" class="main-btn"><i class="fas fa-gamepad"></i>&nbsp;&nbsp;My Next Game!</a>
         </div>
       </div>
-      <div class="navbar-gamiflex-item">
+      <div class="navbar-gamiflex-item hidden-xs hidden-sm">
         <%= link_to "My Games", mygames_path, class: "navbar-gamiflex-link" %>
       </div>
-      <div class="navbar-gamiflex-item">
+      <div class="navbar-gamiflex-item hidden-xs hidden-sm">
         <%= link_to "Edit Profile", profile_path, class: "navbar-gamiflex-link" %>
       </div>
-      <div class="navbar-gamiflex-item">
+      <div class="navbar-gamiflex-item hidden-xs hidden-sm">
         <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "navbar-gamiflex-link" %>
       </div>
+
+      <!-- Dropdown appearing on mobile only -->
+      <div class="navbar-gamiflex-item hidden-md hidden-lg">
+        <div class="dropdown">
+          <i class="fa fa-bars dropdown-toggle dropdown-icon" data-toggle="dropdown"></i>
+          <ul class="dropdown-menu dropdown-menu-right navbar-gamiflex-dropdown-menu">
+            <li><a href="/"><i class="fas fa-gamepad"></i>&nbsp;&nbsp;My Next Game!</a></li>
+            <hr>
+            <li><%= link_to "My Games", mygames_path %></li>
+            <li><%= link_to "Edit Profile", profile_path %></li>
+            <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </div>
+      </div>
     <% else %>
-      <!-- <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "main-btn" %>-->
       <%= link_to new_user_session_path, class: "main-btn" do %>
         <i class="fas fa-sign-in-alt"></i>&nbsp;&nbsp;Login
       <% end %>
