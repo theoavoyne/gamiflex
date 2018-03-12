@@ -1,54 +1,47 @@
-<div class="navbar-wagon">
-  <!-- Logo -->
-  <a href="/" class="navbar-wagon-brand">
+<div class="navbar-gamiflex">
+  <!-- Left Logo -->
+  <a href="/" class="navbar-gamiflex-brand">
     <img src="/assets/gamiflex.png" alt="">
     Gamiflex
   </a>
 
   <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
+  <div class="navbar-gamiflex-right">
 
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Contact</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link last-link">About</a>
-
-    <!-- Profile picture with dropdown list -->
+    <!-- Links to show on laptop/desktop -->
     <% if user_signed_in? %>
-      <div class="navbar-wagon-item">
+      <div class="navbar-gamiflex-item hidden-xs hidden-sm">
+        <div class="btn-container">
+          <a href="/" class="main-btn"><i class="fas fa-gamepad"></i>&nbsp;&nbsp;My Next Game!</a>
+        </div>
+      </div>
+      <div class="navbar-gamiflex-item hidden-xs hidden-sm">
+        <%= link_to "My Games", mygames_path, class: "navbar-gamiflex-link" %>
+      </div>
+      <div class="navbar-gamiflex-item hidden-xs hidden-sm">
+        <%= link_to "Edit Profile", profile_path, class: "navbar-gamiflex-link" %>
+      </div>
+      <div class="navbar-gamiflex-item hidden-xs hidden-sm">
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "navbar-gamiflex-link" %>
+      </div>
+
+      <!-- Dropdown appearing on mobile only -->
+      <div class="navbar-gamiflex-item hidden-md hidden-lg">
         <div class="dropdown">
-          <img src="<%= current_user.photo_url ? cl_image_path(current_user.photo) : "http://www.unixstickers.com/image/data/stickers/guyfawkes/guyfawkes.sh.png" %>" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-              <%= link_to profile_path do %>
-                <i class="fa fa-user"></i><span class="dropdown-link">Profile</span>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to mygames_path do %>
-                <i class="fa fa-gamepad"></i><span class="dropdown-link">My games</span>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i><span class="dropdown-link">Log out</span>
-              <% end %>
-            </li>
+          <i class="fa fa-bars dropdown-toggle dropdown-icon" data-toggle="dropdown"></i>
+          <ul class="dropdown-menu dropdown-menu-right navbar-gamiflex-dropdown-menu">
+            <li><a href="/"><i class="fas fa-gamepad"></i>&nbsp;&nbsp;My Next Game!</a></li>
+            <hr>
+            <li><%= link_to "My Games", mygames_path %></li>
+            <li><%= link_to "Edit Profile", profile_path %></li>
+            <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
           </ul>
         </div>
       </div>
     <% else %>
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "main-btn" %>
+      <%= link_to new_user_session_path, class: "main-btn" do %>
+        <i class="fas fa-sign-in-alt"></i>&nbsp;&nbsp;Login
+      <% end %>
     <% end %>
-  </div>
-
-  <!-- Dropdown appearing on mobile only -->
-  <div class="navbar-wagon-item hidden-md hidden-lg">
-    <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Host</a></li>
-        <li><a href="#">Trips</a></li>
-        <li><a href="#">Messagese</a></li>
-      </ul>
-    </div>
   </div>
 </div>
