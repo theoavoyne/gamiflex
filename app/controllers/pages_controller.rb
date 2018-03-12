@@ -27,5 +27,7 @@ class PagesController < ApplicationController
   end
 
   def suggestions
+    @suggestion = current_user.suggestion
+    @suggestion = nil if @suggestion == []
   end
 end
