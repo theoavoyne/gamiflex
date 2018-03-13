@@ -50,10 +50,10 @@ let j = 10;
 let dir = 1
 
 function moveLineRight() {
-  j += (dir * 3);
+  j += (Math.random() * 30);
   line.style.width = `${j}px`;
-  if(j > 400 || j <= 0){
-    dir *= -1;
+  if(j > 400){
+    j = 0;
   }
 }
 
@@ -64,11 +64,10 @@ let interval4 = null;
 let interval5 = null;
 
 function intervaux() {
-  interval1 = setInterval(moveLineRight, 1);
+  interval1 = setInterval(moveLineRight, 80);
   interval2 = setInterval(operations, 800);
   interval3 = setInterval(comparing, 10);
   interval4 = setInterval(changeImage, 85);
-  interval5 = setInterval(moveLineRight, 1);
 }
 
 function killInterval() {
@@ -78,6 +77,8 @@ function killInterval() {
   clearInterval(interval4);
   clearInterval(interval5);
 }
+
+intervaux();
 
 let loadingContent = document.getElementById('loading-container');
 let button = document.getElementById('landing-button');

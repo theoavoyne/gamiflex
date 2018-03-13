@@ -1,0 +1,49 @@
+#loading-container {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 1000;
+  display: none;
+  text-align: center;
+}
+
+.loading-images {
+  height: 300px;
+  display: none;
+  opacity: 0.6;
+}
+
+.loading-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.text-content {
+  width: 500px;
+  .col-md-6 {
+    text-align: center;
+  }
+}
+
+.game-names {
+  display: none;
+  overflow: hidden;
+  height: 100px;
+}
+
+#line {
+  height: 5px;
+  width: 10px;
+  margin-bottom: 40px;
+  background-color: $green-btn;
+}
+
+.turbolinks-progress-bar {
+  height: 5px;
+  background-color: #fff;
+}

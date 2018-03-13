@@ -6,7 +6,7 @@
     <div id="line"></div>
     <div class="text-content row">
       <div class="col-xs-6">
-        <p>Game:</p>
+        <p><strong>Game:</strong></p>
         <% @games_list.each do |game| %>
           <p class="game-names">
             <%= game.name %>
@@ -14,7 +14,7 @@
         <% end %>
       </div>
       <div class="col-xs-6">
-        <p>Comparing:</p>
+        <p><strong>Comparing:</strong></p>
         <p id="comparing"></p>
       </div>
     </div>
