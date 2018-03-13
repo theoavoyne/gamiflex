@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get '/profile', to: "pages#profile", as: 'profile'
   get '/mygames', to: "pages#mygames", as: 'mygames'
+  get '/suggestions', to: "pages#suggestions", as: 'suggestions'
 
   get '/search', to: "games#search", as: 'search'
 
