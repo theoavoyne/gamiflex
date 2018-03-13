@@ -1,25 +1,6 @@
 var Turbolinks = require("turbolinks")
 Turbolinks.start()
 
-const loadingContent = document.getElementById('loading-container');
-const landingButton = document.getElementById('landing-button');
-
-// // function display(timeout) {
-// //   loadingContent.style.display = 'block';
-// //   setTimeout(function() {
-// //     loadingContent.style.display = 'none';
-// //     }, timeout);
-// // }
-
-// window.onload = function () {
-//   let timeLoad = window.performance.timing.domContentLoadedEventEnd-window.performance.timing.navigationStart;
-//   console.log(timeLoad);
-// }
-
-// ////////////////////////////////////////////////////////////////
-
-// ///////////////////////////////////////////////////////////
-
 const images = document.querySelectorAll('.loading-images');
 const names = document.querySelectorAll('.game-names');
 const operation = document.getElementById('operation');
@@ -63,10 +44,6 @@ function backtick(number) {
   }
 }
 
-// setInterval(operations, 800);
-// setInterval(comparing, 10);
-// setInterval(changeImage, 85);
-
 const line = document.getElementById('line');
 
 let j = 10;
@@ -80,21 +57,36 @@ function moveLineRight() {
   }
 }
 
+let interval1 = null;
+let interval2 = null;
+let interval3 = null;
+let interval4 = null;
+let interval5 = null;
+
 function intervaux() {
-  setInterval(moveLineRight, 1);
-  setInterval(operations, 800);
-  setInterval(comparing, 10);
-  setInterval(changeImage, 85);
-  setInterval(moveLineRight, 1);
+  interval1 = setInterval(moveLineRight, 1);
+  interval2 = setInterval(operations, 800);
+  interval3 = setInterval(comparing, 10);
+  interval4 = setInterval(changeImage, 85);
+  interval5 = setInterval(moveLineRight, 1);
 }
 
-// landingButton.addEventListener('click', intervaux);
+function killInterval() {
+  clearInterval(interval1);
+  clearInterval(interval2);
+  clearInterval(interval3);
+  clearInterval(interval4);
+  clearInterval(interval5);
+}
+
+let loadingContent = document.getElementById('loading-container');
+let button = document.getElementById('landing-button');
 
 document.addEventListener("turbolinks:before-cache", function(){
   loadingContent.style.display = 'block';
+  intervaux();
 });
 
 document.addEventListener("turbolinks:render", function(){
-  loadingContent.style.display = 'none';
+  killInterval();
 });
-

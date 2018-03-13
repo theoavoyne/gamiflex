@@ -8,7 +8,6 @@
 // layout file, like app/views/layouts/application.html.erb
 
 //= require turbolinks
-
 import "bootstrap";
 
 console.log('Hello World from Webpacker')
