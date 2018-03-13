@@ -27,7 +27,9 @@ class PagesController < ApplicationController
   end
 
   def suggestions
+    @games = Game.all
     @suggestion = current_user.suggestion
     @suggestion = nil if @suggestion == []
+    sleep 5
   end
 end

@@ -1,0 +1,128 @@
+#loading-container {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 1000;
+  display: none;
+  text-align: center;
+}
+
+.loading-images {
+  height: 300px;
+  display: none;
+}
+
+.loading-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.text-content {
+  margin-bottom: 100px;
+  width: 500px;
+  .col-md-6 {
+    text-align: center;
+  }
+}
+
+.game-names {
+  display: none;
+  overflow: hidden;
+  height: 100px;
+}
+
+#line {
+  height: 5px;
+  width: 10px;
+  margin-bottom: 40px;
+  background-color: red;
+}
+
+///////////// Moving Gear Animation /////////////
+@keyframes lds-gear {
+0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    50% {
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+    }
+    @-webkit-keyframes lds-gear {
+      0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      50% {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+    .lds-gear > div {
+      -webkit-transform-origin: 100px 100px;
+      transform-origin: 100px 100px;
+      -webkit-animation: lds-gear 7s infinite linear;
+      animation: lds-gear 7s infinite linear;
+      position: relative;
+    }
+    .lds-gear > div div {
+      position: absolute;
+      width: 26px;
+      height: 192px;
+      background: #28292f;
+      left: 100px;
+      top: 100px;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+    .lds-gear > div div:nth-child(1) {
+      width: 152px;
+      height: 152px;
+      border-radius: 50%;
+    }
+    .lds-gear > div div:nth-child(3) {
+      -webkit-transform: translate(-50%, -50%) rotate(30deg);
+      transform: translate(-50%, -50%) rotate(30deg);
+    }
+    .lds-gear > div div:nth-child(4) {
+      -webkit-transform: translate(-50%, -50%) rotate(60deg);
+      transform: translate(-50%, -50%) rotate(60deg);
+    }
+    .lds-gear > div div:nth-child(5) {
+      -webkit-transform: translate(-50%, -50%) rotate(90deg);
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+    .lds-gear > div div:nth-child(6) {
+      -webkit-transform: translate(-50%, -50%) rotate(120deg);
+      transform: translate(-50%, -50%) rotate(120deg);
+    }
+    .lds-gear > div div:nth-child(7) {
+      -webkit-transform: translate(-50%, -50%) rotate(150deg);
+      transform: translate(-50%, -50%) rotate(150deg);
+    }
+    .lds-gear > div div:nth-child(8) {
+      width: 80px;
+      height: 80px;
+      background: #fff;
+      border-radius: 50%;
+    }
+    .lds-gear {
+      width: 200px !important;
+      height: 200px !important;
+      -webkit-transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+      transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+    }
