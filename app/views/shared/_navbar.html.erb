@@ -7,6 +7,17 @@
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
+    <div id="search-items">
+      <div class="cell">
+        <div class="searchbar">
+          <input type="text" class="btn-extended" placeholder="search" id="search" />
+          <div class="btn-search clicked-btn">
+            <i class="fas fa-search"></i>
+          </div>
+          <div id="search-box"></div>
+        </div>
+      </div>
+    </div>
 
     <a href="" class="navbar-wagon-item navbar-wagon-link">Contact</a>
     <a href="" class="navbar-wagon-item navbar-wagon-link last-link">About</a>
@@ -52,3 +63,52 @@
     </div>
   </div>
 </div>
+<script>
+
+  const search = document.getElementById('search');
+  const searchBox = document.getElementById('search-box');
+
+  search.addEventListener("keyup", (event) => {
+    if (event.target.value.length > 2) {
+      fetch(`<%= search_path %>?query=${event.target.value}`)
+      .then(response => response.json())
+      .then((data) => {
+        console.info(data);
+        searchBox.style.display = "block";
+        searchBox.innerHTML = "";
+        let index;
+        for (index = 0; index < 5; index++) {
+          let img;
+          let release_dates;
+          if (data[index]["cover"]) {
+            img = `<img src="https:${data[index]["cover"]["url"]}">`
+
+          } else {
+            img = `<img src="http://blackandwhitesalon.hu/wp-content/uploads/2018/03/1520528222130.png">`
+          };
+          if (data[index]["release_dates"]) {
+            release_dates = data[index]["release_dates"][0]["human"]
+
+          } else {
+            release_dates = `unknown`
+          };
+          console.log(img)
+          const item = `<a href="/games/${data[index]["id"]}" class="link-product">
+                          <div class="game-search">
+                            ${img}
+                            <div class="game-search-text">
+                              <p class="game-search-title">${data[index]["name"]}</p>
+                              <p class="game-search-date">${release_dates}</p>
+                            </div>
+                          </div>
+                        </a>`;
+
+          searchBox.insertAdjacentHTML("beforeend", item);
+        }
+      })
+    } else if (event.target.value.length < 3) {
+      searchBox.style.display = "none"
+    };
+  });
+
+</script>

@@ -11,4 +11,18 @@ class GamesController < ApplicationController
     end
     authorize @game
   end
+
+  def search
+    authorize(Game)
+    query =params[:query]
+
+    url = "https://api-endpoint.igdb.com/games/?search=#{query}&fields=name,cover.url,release_dates.human"
+    headers = {
+      "user-key" => ENV["user_key"],
+      "Accept" => "application/json"
+    }
+    response = HTTParty.get(url, headers: headers)
+
+    render json: response.body
+  end
 end

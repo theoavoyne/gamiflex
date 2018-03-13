@@ -9,7 +9,16 @@
 
 import "bootstrap";
 
-// import "../carousel/slick.min";
-import "../carousel/carousel";
+alert("<%= game_path(27081) %>")
 
 console.log('Hello World from Webpacker')
+
+$('.btn-search').click(function(){
+  $('.btn-search').toggleClass('clicked-btn');
+  $('.searchbar').toggleClass('clicked');
+
+  if($('.searchbar').hasClass('clicked')){
+    $('.btn-extended').focus();
+  }
+
+});
