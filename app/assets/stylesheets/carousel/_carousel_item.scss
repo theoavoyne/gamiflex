@@ -1,0 +1,93 @@
+/* Carousel Item that shows a game */
+.item-wrapper {
+  justify-content: center;
+  display: flex;
+}
+
+.item-carousel {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+
+}
+
+.game-image {
+  max-height: 30vh;
+  margin: 0 auto;
+}
+
+
+/* Filter with check mark to display once the user has clicked on "like"/"dislike" */
+.rated {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  transition-property: all;
+  transition-duration: 0.5s;
+  font-size: 40px;
+  color: green;
+  opacity: 1;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 2;
+  width: 100%;
+  height:100%;
+  i {
+    position: absolute;
+    top: calc(50% - 20px);
+    left: calc(50% - 20px);
+  }
+}
+
+
+/* "Like"/"Dislike" buttons to display when the user hovers over a game */
+.game-links {
+  z-index: 4;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  opacity: 0;
+  transition-property: all;
+  transition-duration: 0.5s;
+  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4));
+  &:hover {
+    opacity: 1;
+    color: white;
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4));
+  }
+}
+
+.like-btn {
+  color: green;
+  font-size: 24px;
+  border-radius: 20px 0px 0px 20px;
+  margin-right: 1px;
+  padding: 3px 8px 4px 14px;
+  transition: all 0.3s;
+  background-color: whitesmoke;
+  &:hover {
+    color: green;
+    background-color: rgba(220, 220, 220, 1);
+  }
+}
+
+.dislike-btn {
+  color: crimson;
+  font-size: 24px;
+  border-radius: 0px 20px 20px 0px;
+  margin-left: 1px;;
+  padding: 3px 14px 4px 8px;
+  transition: all 0.3s;
+  background-color: whitesmoke;
+  &:hover {
+    background-color: rgba(220, 220, 220, 1);
+    color: crimson;
+  }
+}
