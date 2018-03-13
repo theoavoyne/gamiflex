@@ -13,8 +13,4 @@
   </div>
 </div>
 
-<% content_for :after_js do %>
-  <script>
-    import "../javascript/carousel/carousel";
-  </script>
-<% end %>
+<%= javascript_pack_tag 'carousel', media: 'all', 'data-turbolinks-track': 'reload' %>

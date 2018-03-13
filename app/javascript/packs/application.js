@@ -9,13 +9,11 @@
 
 //= require turbolinks
 //= require paloma
-$(document).ready(function(){
-  Paloma.start();
-})
-
-import "bootstrap";
+//= import "../carousel/slick.min";
 
 console.log('Hello World from Webpacker MOther Fucker!');
+
+import "bootstrap";
 
 import "../loading/loading";
 

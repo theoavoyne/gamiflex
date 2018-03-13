@@ -27,7 +27,7 @@ class PagesController < ApplicationController
   end
 
   def suggestions
-    @suggestion = current_user.suggestion
+    @suggestion = current_user.all_games_probability[0..1].map { |game_id, index| Game.find_with_igdb(game_id)}
     @suggestion = nil if @suggestion == []
     sleep 5
   end

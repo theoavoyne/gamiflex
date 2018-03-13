@@ -6,7 +6,7 @@ const names = document.querySelectorAll('.game-names');
 const operation = document.getElementById('operation');
 const comparingText = document.getElementById('comparing');
 
-let i = -1;
+let i = 0;
 
 function changeImage() {
   i += 1;
@@ -83,10 +83,12 @@ intervaux();
 let loadingContent = document.getElementById('loading-container');
 let button = document.getElementById('landing-button');
 
-button.addEventListener("turbolinks:click", function(){
-  loadingContent.style.display = 'block';
-  intervaux();
-});
+if (button) {
+  button.addEventListener("turbolinks:click", function(){
+    loadingContent.style.display = 'block';
+    intervaux();
+  });
+}
 
 document.addEventListener("turbolinks:render", function(){
   killInterval();
