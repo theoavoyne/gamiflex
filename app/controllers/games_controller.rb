@@ -4,10 +4,16 @@ class GamesController < ApplicationController
   def show
     @id = params[:id]
     @game = Game.find_with_igdb(@id)
-    @show_btn = false
+    likes = State.where(game: @game, state: "like").count
+    dislikes = State.where(game: @game, state: "dislike").count
+    @recommand = dislikes.zero? ? 1 : likes / dislikes.to_f
+    @reviews = likes + dislikes
     if user_signed_in? && !State.where(user: current_user, game: @game).exists?
+      @probability = (current_user.probability(@game) / 2) + 0.5
       @show_btn = true
       @state = State.new
+    else
+      @show_btn = false
     end
     authorize @game
   end

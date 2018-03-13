@@ -23,6 +23,7 @@
 
 .left-col {
   text-align: center;
+  min-height: 530px;
 }
 
 .like-buttons {
@@ -31,10 +32,11 @@
 
 .right-col {
   padding: 0 40px 0 20px;
+  margin-bottom: 70px;
 }
 
 .show-published {
-  margin-bottom: 25px;
+  margin-bottom: 12px;
   font-style: italic;
 }
 
@@ -54,4 +56,9 @@
 .flex-button {
   display: flex;
   justify-content: space-around;
+  margin-bottom: 50px;
+}
+
+.show-probability {
+  margin-bottom: 25px;
 }

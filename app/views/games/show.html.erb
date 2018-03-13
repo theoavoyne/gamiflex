@@ -2,9 +2,15 @@
   <div class="row">
     <div class="col-xs-12 col-md-4">
       <div class="left-col">
-        <div class="game-image show" style="background-image: url('<%= cl_image_path @game.photo %>'); height: 400px; width: calc((400px * <%= @game.photo_width %>) / <%= @game.photo_height %>);">
-        </div>
-        <p>Developed by <%= @game.developers.gsub(/;/, ", ") %></p>
+        <% if @game.photo %>
+          <div class="game-image show" style="background-image: url('<%= cl_image_path @game.photo %>'); height: 400px; width: calc((400px * <%= @game.photo_width %>) / <%= @game.photo_height %>);"></div>
+        <% elsif %>
+          <div class="game-image show" style="background-image: url('http://blackandwhitesalon.hu/wp-content/uploads/2018/03/1520528222130.png'); height: 400px; width: 300px;"></div>
+        <% end %>
+        <% if @game.developers %>
+          <p>Developed by <%= @game.developers.gsub(/;/, ", ") %></p>
+        <% end %>
+        <p class="strong <%= @recommand >= 0.5 ? "netflix-green" : "netflix-red" %>"><%= (@recommand * 100).round %>% recommend this game! <span style="font-weight: 400; color: rgb(50, 50, 50)"> (<%= @reviews %> <%= @reviews == 1 ? "review" : "reviews"%>)</span></p>
         <% if @show_btn %>
           <div class="flex-button">
             <div class="like-buttons">
@@ -25,11 +31,28 @@
     </div>
     <div class="col-xs-12 col-md-8">
       <div class="right-col">
-        <h2 class="show-name"><%= @game.name %> (<%= @game.release_date[0..3] %>)</h2>
-        <p class="show-published">Published by <%= @game.publishers.gsub(/;/, ", ") %>.</p>
-        <p class="show-summary"><%= @game.summary %></p>
-        <p class="show-genres"><span class="attribute-label">Genres:</span> <%= @game.genres.gsub(/;/, ", ") %>.</p>
-        <p class="show-platforms"><span class="attribute-label">Platforms:</span> <%= @game.platforms.gsub(/;/, ", ") %>.</p>
+        <h2 class="show-name"><%= @game.name %> (<%= @game.release_date ? @game.release_date[0..3] : 0 %>)</h2>
+        <% if @game.publishers %>
+          <p class="show-published">Published by <%= @game.publishers.gsub(/;/, ", ") %>.</p>
+        <% end %>
+        <% if @show_btn %>
+          <p class="show-probability strong">
+            <i class="fa <%= @probability >= 0.5 ? "fa-thumbs-up netflix-green" : "fa-thumbs-down netflix-red" %>"></i>
+            Based on all the games you played so far,
+            <span class="<%= @probability >= 0.5 ? "netflix-green" : "netflix-red" %> strong">
+              you are <%= (@probability * 100).round %>% likely to like this game.
+            </span>
+          </p>
+        <% end %>
+        <% if @game.summary %>
+          <p class="show-summary"><%= @game.summary %></p>
+        <% end %>
+        <% if @game.genres %>
+          <p class="show-genres"><span class="attribute-label">Genres:</span> <%= @game.genres.gsub(/;/, ", ") %>.</p>
+        <% end %>
+        <% if @game.platforms %>
+          <p class="show-platforms"><span class="attribute-label">Platforms:</span> <%= @game.platforms.gsub(/;/, ", ") %>.</p>
+        <% end %>
       </div>
     </div>
   </div>

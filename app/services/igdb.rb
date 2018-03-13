@@ -19,20 +19,24 @@ class IGDB
       end
 
       # Put response in the right format
-      api_response = Cloudinary::Uploader.upload("https:" + response["cover"]["url"].gsub(/thumb/, "cover_big"))
+      if response["cover"]
+        api_response = Cloudinary::Uploader.upload("https:" + response["cover"]["url"].gsub(/thumb/, "cover_big"))
+      else
+        api_response = nil
+      end
       results = {
         id: response["id"],
         name: response["name"],
         summary: response["summary"],
         release_date: response["release_dates"] ? response["release_dates"][0]["human"] : nil,
-        suggestions: join_if_exists(response["games"]),
-        platforms: join_if_exists(find_platform(response["platforms"])),
-        photo: api_response["public_id"],
-        photo_width: nil_if_not_exists(response["cover"]["width"]),
-        photo_height: nil_if_not_exists(response["cover"]["height"]),
-        genres: join_if_exists(find_genre(response["genres"])),
-        publishers: join_if_exists(find_companies(response["publishers"])),
-        developers: join_if_exists(find_companies(response["developers"]))
+        suggestions: response["games"] ? response["games"] : nil,
+        platforms: response["platforms"] ? find_platform(response["platforms"]).join(";") : nil,
+        photo: api_response ? api_response["public_id"] : nil,
+        photo_width: response["cover"] ? response["cover"]["width"] : nil,
+        photo_height: response["cover"] ? response["cover"]["height"] : nil,
+        genres: response["genres"] ? find_genre(response["genres"]).join(";") : nil,
+        publishers: response["publishers"] ? find_companies(response["publishers"]).join(";") : nil,
+        developers: response["developpers"] ? find_companies(response["developpers"]).join(";") : nil,
       }
 
       # Storing Game in DB
@@ -101,14 +105,6 @@ class IGDB
 
     def not_found
       raise ActionController::RoutingError.new('Not Found')
-    end
-
-    def nil_if_not_exists(expression)
-      expression ? expression : nil
-    end
-
-    def join_if_exists(expression)
-      expression ? expression.join(";") : nil
     end
   end
 end

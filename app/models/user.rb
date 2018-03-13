@@ -34,7 +34,7 @@ class User < ApplicationRecord
     Game
       .joins("inner join states on states.game_id = games.id")
       .where
-      .not(id: User.first.games)
+      .not(id: self.games)
       .distinct
       .each do |game|
         games[game.id] = probability(game)
@@ -54,7 +54,7 @@ class User < ApplicationRecord
       .count
 
     conflicts = State
-      .where(user: [User.first, User.second])
+      .where(user: [user_1, user_2])
       .group(:game_id)
       .having("count(distinct states.state) = 2")
       .count
