@@ -1,0 +1,29 @@
+<% @games_list = Game.last(30) %>
+
+<div id="loading-container">
+  <h2 id="operation">Compiling data...</h2>
+  <div class="loading-content">
+    <div id="line"></div>
+    <div class="text-content row">
+      <div class="col-xs-6">
+        <p><strong>Game:</strong></p>
+        <% @games_list.each do |game| %>
+          <p class="game-names">
+            <%= game.name %>
+          </p>
+        <% end %>
+      </div>
+      <div class="col-xs-6">
+        <p><strong>Comparing:</strong></p>
+        <p id="comparing"></p>
+      </div>
+    </div>
+        <!-- Moving Game Cover -->
+    <div class="images-content">
+      <% @games_list.each do |game| %>
+        <%= cl_image_tag game.photo, class: 'loading-images' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

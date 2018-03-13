@@ -14,6 +14,8 @@ gem 'json'
 gem 'cloudinary'
 gem 'jquery-rails'
 gem 'carrierwave', '~> 1.2'
+gem 'turbolinks', '~> 5.0.0'
+gem 'paloma'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
