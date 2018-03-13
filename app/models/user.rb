@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   mount_uploader :photo, PhotoUploader
-  has_many :states
+  has_many :states, dependent: :destroy
   has_many :games, through: :states
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -10,76 +10,86 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
 
-  def suggestion
-    time = Time.now
-    count = 1 # To display the game number while looping over the user's played games
-    game_list = {} # Initializing final output
-
-    self.states.where(state: "like").each do |state|
-      puts "//////////////////////Game no. #{count}//////////////////////"
-
-      # -------------------------------
-      user_played = find_user_played(state)
-      puts "//////////User_played//////////"
-      puts "List: #{user_played}"
-      puts "List-size: #{user_played.length} users played that game"
-      # Return a array of user's ids
-      # All these users played the "state.game_id" game!
-
-
-      # -------------------------------
-      populars =  find_populars(user_played)
-      puts "//////////Populars//////////"
-      puts "List: #{populars}"
-      puts "List-size: a total of #{populars.length} game are played in this given list"
-      # Return an array of [Game, count] sorted by count
-      # It represents all the games played by user_played, sorted by popularity!
-
-      # -------------------------------
-      list_size = game_list.length # Take the initial size of the game_list
-      max_number_of_insertions = 5
-
-      puts "//////////Inserting time//////////"
-      populars.each do |game_id, game_count|
-
-        already_in_list = game_list[game_id]
-        already_played = State.where(user_id: self.id, game_id: game_id).exists?
-
-        unless already_in_list || already_played
-          global_game_count = State.where(game_id: game_id, state: "like").length
-          game_list[game_id] = global_game_count
-          puts "-"
-          puts "Inserting #{game_id} in the list.."
-          puts "#{global_game_count} users liked this game"
-          puts "-"
-          break if game_list.length - list_size == max_number_of_insertions
-        end
+  def probability(game)
+    indexes = all_community_index
+    numerator = 0
+    denominator = 0
+    State.where(game: game).each do |state|
+      coef = state.state == "like" ? 1 : -1
+      unless state.user_id == self.id
+        numerator += coef * indexes[state.user_id]
+        denominator += 1
       end
-      puts "Insertions are done for this game"
-      puts "#{game_list.length - list_size} games have been inserted in the list"
-      # Insert games inside the game_list
-      # The games inserted are the most populars of the "populars" list
-      # It can't insert more than "max_number_of_insertions" games from the same "populars" list
-
-      count += 1
     end
-
-    intermediary_list = game_list.sort_by { |key, value| -value }
-    final_list = intermediary_list.map do |key, value|
-      Game.find_with_igdb(key)
+    if denominator == 0
+      return 0
+    else
+      return numerator / denominator.to_f
     end
+  end
 
-    puts "Fast: #{Time.now - time}s"
-    return final_list
+  def all_games_probability
+    games = {}
+
+    Game
+      .joins("inner join states on states.game_id = games.id")
+      .where
+      .not(id: User.first.games)
+      .distinct
+      .each do |game|
+        games[game.id] = probability(game)
+      end
+
+    return games.sort_by { |key, value| -value }
   end
 
   private
 
-  def find_user_played(state)
-    State.where(game_id: state.game_id, state: "like").map { |state| state.user_id }
+    def compared_user(user)
+    user_1 = self
+    user_2 = user
+
+    all_games = State.where(user: [user_1, user_2])
+      .group(:game_id, :state)
+      .count
+
+    conflicts = State
+      .where(user: [User.first, User.second])
+      .group(:game_id)
+      .having("count(distinct states.state) = 2")
+      .count
+      .length
+  {
+    all_games: all_games,
+    likes_in_common: all_games.count { |key, value| value == 2 && key[1] == "like"},
+    total_likes: all_games.count { |key, value| key[1] == "like"},
+    dislikes_in_common: all_games.count { |key, value| value == 2 && key[1] == "dislike"},
+    total_dislikes: all_games.count { |key, value| key[1] == "dislike"},
+    conflicts: conflicts
+  }
   end
 
-  def find_populars(users)
-    State.where(user_id: users).group(:game_id).count.sort_by { |key, value| -value }
+  def community_index(user)
+    data = compared_user(user)
+
+    numerator = data[:likes_in_common] + data[:dislikes_in_common] - data[:conflicts]
+    denominator = data[:total_likes] + data[:total_dislikes] - (2 * data[:conflicts]).to_f
+
+    return numerator / denominator
   end
+
+  def all_community_index
+    @all_community_index ||= fetch_all_community_index
+  end
+
+  def fetch_all_community_index
+    indexes = {}
+
+    User.all.each do |user|
+      indexes[user.id] = community_index(user) unless user == self
+    end
+
+    return indexes
+  end
+
 end
