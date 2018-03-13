@@ -82,7 +82,7 @@ function killInterval() {
 let loadingContent = document.getElementById('loading-container');
 let button = document.getElementById('landing-button');
 
-document.addEventListener("turbolinks:before-cache", function(){
+button.addEventListener("turbolinks:click", function(){
   loadingContent.style.display = 'block';
   intervaux();
 });
