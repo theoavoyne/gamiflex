@@ -4,8 +4,7 @@ class StatesController < ApplicationController
     @state.user = current_user
     authorize @state
     @state.save
-
-    redirect_to params[:redirect] ? root_path : game_path(@state.game)
+    # redirect_to params[:redirect] ? root_path : game_path(@state.game)
   end
 
   def destroy

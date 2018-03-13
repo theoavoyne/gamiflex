@@ -1,14 +1,24 @@
 <div class="slider-container">
-  <h2 class="title-selection"><strong>Tell us the games you like | <%= remaining %> remaining</strong></h2>
+  <div class="title-container">
+    <h2 class="title"><strong>Tell us the games you like | <%= remaining %> remaining</strong></h2>
+    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="Hover over each game and click on either like or dislike">
+      ?
+    </button>
+  </div>
   <span id="nextArrow"></span>
   <span id="prevArrow"></span>
   <div id="slider" class="slider">
     <% games.each do |game| %>
-      <%= link_to game_states_path(game, state, redirect: "home"), :method => :post do %>
-        <div class="item-carousel">
-          <img src="<%= cl_image_path(game.photo) %>" alt="<% game %>">
+      <div class="item-carousel" style="background-image: url('<%= cl_image_path(game.photo) %>'); background-size: cover; height: 35vh;">
+        <div class="game-links">
+          <%= link_to game_states_path( { game_id: game.id, state: "like" } ), method: :post, remote: true, class: "like-btn"  do %>
+            <i class="fas fa-thumbs-up"></i>
+          <% end %>
+          <%= link_to game_states_path( { game_id: game.id, state: "dislike" } ), method: :post, remote: true, class: "dislike-btn"  do %>
+            <i class="fas fa-thumbs-down"></i>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     <% end %>
   </div>
 </div>
