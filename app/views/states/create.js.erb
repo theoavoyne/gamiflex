@@ -1,0 +1,8 @@
+// Mark Game Card with a check mark when the user has clicked on "like"/"dislike" //
+document.getElementById("<%= @game_id %>").querySelector(".game-links").remove();
+document.getElementById("<%= @game_id %>").querySelector(".game-filter").innerHTML = "<i class='fas fa-check-circle'></i>";
+document.getElementById("<%= @game_id %>").querySelector(".game-filter").classList.add("rated");
+
+<% if @state.state == "like" %>
+  document.getElementById("counter").innerHTML = "<%= @remaining %>"
+<% end %>
