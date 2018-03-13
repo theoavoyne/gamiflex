@@ -1,0 +1,48 @@
+<h1>Suggestions</h1>
+
+<% if @suggestion %>
+  <div class="row">
+    <div class="banner banner-even">
+      <div class="col-xs-12 col-md-6">
+        <div class="game-content">
+          <div class="banner-text">
+            <h3 class="game-title">You'll like this game!</h3>
+            <p class="game-summary"><%= @suggestion.first.summary %></p>
+            <p class="game-recommend">97% Recommend this game</p>
+            <p class="game-friend">Including your friend <span class="friend-name">Olivier Riccini</span></p>
+            <%= link_to "See more", game_path(id: @suggestion.first.id), class: "main-btn" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-6">
+        <div class="img-content">
+          <div class="game-image" style="background-image: url('<%= cl_image_path @suggestion.first.photo %>'); height: 50vh; width: calc((50vh * <%= @suggestion.first.photo_width %>) / <%= @suggestion.first.photo_height %>);">
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="banner banner-odd">
+      <div class="col-xs-12 col-md-6">
+        <div class="img-content">
+          <div class="game-image" style="background-image: url('<%= cl_image_path @suggestion.second.photo %>'); height: 50vh; width: calc((50vh * <%= @suggestion.second.photo_width %>) / <%= @suggestion.second.photo_height %>);">
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-6">
+        <div class="game-content">
+          <div class="banner-text odd">
+            <h3 class="game-title">You'll like this game!</h3>
+            <p class="game-summary"><%= @suggestion.second.summary %></p>
+            <p class="game-recommend">97% Recommend this game</p>
+            <p class="game-friend odd">Including your friend <span class="friend-name">Olivier Riccini</span></p>
+            <%= link_to "See more", game_path(id: @suggestion.second.id), class: "main-btn" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% elsif @games %>
+  <%= render 'shared/carousel', games: @games, state: @state, remaining: @remaining %>
+<% end %>

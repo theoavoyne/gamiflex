@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   def home
     if user_signed_in?
       if policy(current_user).suggest?
-        @suggestion = current_user.suggestion
+        @suggestion = current_user.all_games_probability[0..1].map { |game_id, index| Game.find_with_igdb(game_id)}
         @suggestion = nil if @suggestion == []
       elsif policy(current_user).choose_games?
         games_played = current_user.states.map do |element|
@@ -24,5 +24,10 @@ class PagesController < ApplicationController
   end
 
   def mygames
+  end
+
+  def suggestions
+    @suggestion = current_user.suggestion
+    @suggestion = nil if @suggestion == []
   end
 end
