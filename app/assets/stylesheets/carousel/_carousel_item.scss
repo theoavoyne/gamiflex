@@ -12,10 +12,21 @@
 }
 
 .item-image {
-  max-height: 25vh;
   margin: 0 auto;
+  max-height: 15vw;
 }
 
+@media screen and (max-width: 900px) {
+  .item-image {
+    max-height: 21vw;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .item-image {
+    max-height: 27vw;
+  }
+}
 
 /* Filter with thumbs-up/thumbs-down to display once the user has clicked on "like"/"dislike" */
 .rated-like {
