@@ -2,11 +2,13 @@ class StatesController < ApplicationController
   def create
     @state = current_user.states.build(state_params)
     @game_id = params[:game_id]
-    @state.user = current_user
 
     authorize @state
 
-    if @state.save
+    if params[:page] == "show"
+      @state.save
+      redirect_to game_path(@game_id)
+    elsif @state.save
       if params[:state] == "like"
         @remaining = 5 - current_user.states.where(state: 'like').length
       end

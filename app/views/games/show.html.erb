@@ -2,57 +2,86 @@
   <div class="row">
     <div class="col-xs-12 col-md-4">
       <div class="left-col">
+
         <% if @game.photo %>
           <div class="game-image show" style="background-image: url('<%= cl_image_path @game.photo %>'); height: 400px; width: calc((400px * <%= @game.photo_width %>) / <%= @game.photo_height %>);"></div>
-        <% elsif %>
+        <% else %>
           <div class="game-image show" style="background-image: url('http://blackandwhitesalon.hu/wp-content/uploads/2018/03/1520528222130.png'); height: 400px; width: 300px;"></div>
         <% end %>
+
         <% if @game.developers %>
           <p>Developed by <%= @game.developers.gsub(/;/, ", ") %></p>
         <% end %>
-        <p class="strong <%= @recommand >= 0.5 ? "netflix-green" : "netflix-red" %>"><%= (@recommand * 100).round %>% recommend this game! <span style="font-weight: 400; color: rgb(50, 50, 50)"> (<%= @reviews %> <%= @reviews == 1 ? "review" : "reviews"%>)</span></p>
+
+        <p class="strong <%= @recommend >= 0.5 ? "netflix-green" : "netflix-red" %>">
+          <%= (@recommend * 100).round %>% recommend this game!
+          <span style="font-weight: 400; color: rgb(50, 50, 50)"> (<%= @reviews %> <%= @reviews == 1 ? "review" : "reviews"%>)</span>
+        </p>
+
         <% if @show_btn %>
           <div class="flex-button">
             <div class="like-buttons">
-              <%= link_to game_states_path(@game, @state), class: "like-link", :method => :post do %>
+              <%= link_to game_states_path(@game, @state, page: "show"), class: "like-link", :method => :post do %>
                 <div class="like">
                   <i class="fa fa-thumbs-up" style="color: #23BA69; font-size: 28px"></i>
                 </div>
               <% end %>
-              <%= link_to game_states_path(@game, @state, state: "dislike"), class: "like-link", :method => :post do %>
+              <%= link_to game_states_path(@game, @state, state: "dislike", page: "show"), class: "like-link", :method => :post do %>
                 <div class="dislike">
                   <i class="fa fa-thumbs-down" style="color: #F24236; font-size: 28px"></i>
                 </div>
               <% end %>
             </div>
           </div>
+        <% elsif @state %>
+          <p class="show-state">You <%= @state + "d" %> this game </p>
+          <%= link_to "My games", mygames_path, class: "main-btn" %>
         <% end %>
       </div>
     </div>
+
     <div class="col-xs-12 col-md-8">
       <div class="right-col">
-        <h2 class="show-name"><%= @game.name %> (<%= @game.release_date ? @game.release_date[0..3] : 0 %>)</h2>
+
+        <h2 class="show-name"><%= @game.name %> <%= @game.release_date ? "(#{@game.release_date[0..3]})" : "" %></h2>
+
         <% if @game.publishers %>
           <p class="show-published">Published by <%= @game.publishers.gsub(/;/, ", ") %>.</p>
         <% end %>
-        <% if @show_btn %>
+
+        <% if !@show_btn.nil? %>
+
+          <% if @reviews > 0 %>
+            <p class="show-probability strong">
+              <i class="fa <%= @probability >= 0.5 ? "fa-thumbs-up netflix-green" : "fa-thumbs-down netflix-red" %>"></i>
+              Based on all the games you played so far,
+              <span class="<%= @probability >= 0.5 ? "netflix-green" : "netflix-red" %> strong">
+                you are <%= (@probability * 100).round %>% likely to like this game.
+              </span>
+            </p>
+          <% else %>
+              <p class="show-probability strong">Sorry, we don't have enough reviews on this game :(</p>
+          <% end %>
+
+        <% else %>
           <p class="show-probability strong">
-            <i class="fa <%= @probability >= 0.5 ? "fa-thumbs-up netflix-green" : "fa-thumbs-down netflix-red" %>"></i>
-            Based on all the games you played so far,
-            <span class="<%= @probability >= 0.5 ? "netflix-green" : "netflix-red" %> strong">
-              you are <%= (@probability * 100).round %>% likely to like this game.
-            </span>
+          <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "main-btn" %>
+          to see how likely you are to like this game.
           </p>
         <% end %>
+
         <% if @game.summary %>
           <p class="show-summary"><%= @game.summary %></p>
         <% end %>
+
         <% if @game.genres %>
           <p class="show-genres"><span class="attribute-label">Genres:</span> <%= @game.genres.gsub(/;/, ", ") %>.</p>
         <% end %>
+
         <% if @game.platforms %>
           <p class="show-platforms"><span class="attribute-label">Platforms:</span> <%= @game.platforms.gsub(/;/, ", ") %>.</p>
         <% end %>
+
       </div>
     </div>
   </div>
