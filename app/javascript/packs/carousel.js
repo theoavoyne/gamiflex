@@ -67,8 +67,3 @@ prev.addEventListener('click', function() {
 if(window.innerWidth < 1200) {
   sideImages();
 }
-
-// 'Help' Popover
-$(function () {
-  $('[data-toggle="popover"]').popover()
-})
