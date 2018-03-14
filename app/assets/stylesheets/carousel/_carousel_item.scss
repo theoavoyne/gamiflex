@@ -126,3 +126,15 @@
     color: crimson;
   }
 }
+
+@media screen and (max-width: 900px) {
+  .item-image {
+    max-height: 21vw;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .item-image {
+    max-height: 27vw;
+  }
+}
