@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
+    @top_rated = State.where(state: "like").group(:game_id).count
   end
 
   def profile
