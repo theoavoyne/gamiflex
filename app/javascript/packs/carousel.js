@@ -1,7 +1,5 @@
 import "slick-carousel";
 
-const left = document.querySelector('.leftClickable');
-const right = document.querySelector('.rightClickable');
 const cards = document.querySelectorAll('.item-carousel');
 ////////////////////
 
@@ -38,7 +36,6 @@ $('.slider').slick({
 
 /* Apply style to side images*/
 function sideImages() {
-  spanClickResize();
   const active = document.querySelectorAll('.slick-active');
 
   active.forEach(function(card) {
@@ -48,7 +45,11 @@ function sideImages() {
       card.querySelector('.item-carousel').style.margin = '0 auto';
       card.style.paddingTop = '10px'; // modified
       card.style.paddingBottom = '10px'; // modified
-      console.log(card)
+      let makeClickable = document.querySelectorAll('.slick-active .non-clickable');
+      makeClickable[0].style.backgroundColor = `blue`;
+      makeClickable[0].classList.add('leftClickable');
+      makeClickable[makeClickable.length - 1].style.backgroundColor = `green`;
+      makeClickable[makeClickable.length - 1].classList.add('rightClickable');
     } else {
       card.style.opacity = '1';
       card.querySelector('.item-carousel').style.margin = '0';
@@ -59,27 +60,29 @@ function sideImages() {
 
 sideImages();
 
-function spanClickResize() {
-  const active = document.querySelectorAll('.slick-active img');
-  var rectLeft = active[0].getBoundingClientRect();
-  var rectRight = active[active.length - 1].getBoundingClientRect();
+// function spanClickResize() {
+//   const active = document.querySelectorAll('.slick-active img');
+//   var rectLeft = active[0].getBoundingClientRect();
+//   var rectRight = active[active.length - 1].getBoundingClientRect();
 
-  left.style.width = `${active[0].offsetWidth}px`;
-  right.style.width = `${active[active.length - 1].offsetWidth}px`;
-  left.style.height = `${active[0].offsetHeight}px`;
-  right.style.height = `${active[active.length - 1].offsetHeight}px`;
+//   left.style.width = `${active[0].offsetWidth}px`;
+//   right.style.width = `${active[active.length - 1].offsetWidth}px`;
+//   left.style.height = `${active[0].offsetHeight}px`;
+//   right.style.height = `${active[active.length - 1].offsetHeight}px`;
 
-  left.style.bottom = `calc(100vh - ${rectRight.bottom}px)`;
-  right.style.bottom = `calc(100vh - ${rectLeft.bottom}px)`;
-  left.style.left = `${rectLeft.left}px`;
-  right.style.left = `${rectRight.left}px`;
+//   left.style.bottom = `calc(100vh - ${rectRight.bottom}px)`;
+//   right.style.bottom = `calc(100vh - ${rectLeft.bottom}px)`;
+//   left.style.left = `${rectLeft.left}px`;
+//   right.style.left = `${rectRight.left}px`;
 
-  left.style.backgroundColor = `blue`;
-  right.style.backgroundColor = `red`;
+//   left.style.backgroundColor = `blue`;
+//   right.style.backgroundColor = `red`;
 
-}
+// }
 
-spanClickResize();
+// spanClickResize();
+const left = document.querySelector('.leftClickable');
+const right = document.querySelector('.rightClickable');
 
 window.addEventListener('resize', function(){
   sideImages();
@@ -95,10 +98,9 @@ right.addEventListener('click', function() {
 ////////////////////
 if(window.innerWidth < 1200) {
   sideImages();
-  spanClickResize();
 }
 
-// 'Help' Popover
-$(function () {
-  $('[data-toggle="popover"]').popover()
-})
+// // 'Help' Popover
+// $(function () {
+//   $('[data-toggle="popover"]').popover()
+// })

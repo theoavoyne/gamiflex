@@ -68,30 +68,30 @@
   box-shadow: 10px 5px 30px rgba(0, 0, 0, 0.5);
 }
 
-.leftClickable {
-  position: absolute;
-  z-index: 99;
-  // height: 208px;
-  // width: 21vw;
-  // top: calc(60% - 100px);
-  // right: 0;
-}
+// // .leftClickable {
+// //   position: absolute;
+// //   z-index: 99;
+// //   // height: 208px;
+// //   // width: 21vw;
+// //   // top: calc(60% - 100px);
+// //   // right: 0;
+// // }
 
-.rightClickable {
-  position: absolute;
-  z-index: 99;
-  // height: 208px;
-  // width: 142px;
-  // width: 21vw;
-  // top: calc(60% - 100px);
-  // left: 0;
-}
+// // .rightClickable {
+// //   position: absolute;
+// //   z-index: 99;
+// //   // height: 208px;
+// //   // width: 142px;
+// //   // width: 21vw;
+// //   // top: calc(60% - 100px);
+// //   // left: 0;
+// }
 
 .non-clickable {
   position: absolute;
   top: 0;
   bottom: 0;
-  background: red;
   left: 0;
   right: 0;
+  z-index: 999;
 }
