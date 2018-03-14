@@ -2,10 +2,10 @@
 document.getElementById("<%= @game_id %>").querySelector(".game-links").remove();
 
 <% if @state.state == "like" %>
-  document.getElementById("<%= @game_id %>").querySelector(".game-filter").innerHTML = '<i class="fas fa-thumbs-up"></i>';
+  document.getElementById("<%= @game_id %>").querySelector(".game-filter").innerHTML = '<i class="fas fa-check"></i>';
   document.getElementById("<%= @game_id %>").querySelector(".game-filter").classList.add("rated-like");
 <% else %>
-  document.getElementById("<%= @game_id %>").querySelector(".game-filter").innerHTML = '<i class="fas fa-thumbs-down"></i>';
+  document.getElementById("<%= @game_id %>").querySelector(".game-filter").innerHTML = '<i class="fas fa-times"></i>';
   document.getElementById("<%= @game_id %>").querySelector(".game-filter").classList.add("rated-dislike");
 <% end %>
 

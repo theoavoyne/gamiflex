@@ -12,7 +12,7 @@
       <div>
         <div class="item-wrapper">
           <div id="<%= game.id %>" class="item-carousel">
-            <%= cl_image_tag game.photo , class: "game-image"%>
+            <%= cl_image_tag game.photo , class: "item-image"%>
             <div class="game-filter"></div>
             <div class="game-links">
               <%= link_to game_states_path( { game_id: game.id, state: "like" } ), method: :post, remote: true, class: "like-btn"  do %>

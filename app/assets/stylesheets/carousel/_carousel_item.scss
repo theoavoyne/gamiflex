@@ -11,7 +11,7 @@
 
 }
 
-.game-image {
+.item-image {
   max-height: 30vh;
   margin: 0 auto;
 }
@@ -27,7 +27,7 @@
   transition-property: all;
   transition-duration: 0.5s;
   font-size: 40px;
-  color: green;
+  color: white;
   opacity: 1;
   background-color: rgba(0,0,0,0.7);
   z-index: 2;
@@ -50,7 +50,7 @@
   transition-property: all;
   transition-duration: 0.5s;
   font-size: 40px;
-  color: crimson;
+  color: white;
   opacity: 1;
   background-color: rgba(0,0,0,0.5);
   z-index: 2;
