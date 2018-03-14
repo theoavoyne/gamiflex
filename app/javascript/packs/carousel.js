@@ -2,7 +2,7 @@ import "slick-carousel";
 
 const cards = document.querySelectorAll('.item-carousel');
 ////////////////////
-
+sideImages();
 /* Implement Slick function */
 $('.slider').slick({
   prevArrow: '.rightClickable',
@@ -31,8 +31,6 @@ $('.slider').slick({
     }
   ]
 });
-
-////////////////////
 
 /* Apply style to side images*/
 function sideImages() {
@@ -84,23 +82,25 @@ sideImages();
 const left = document.querySelector('.leftClickable');
 const right = document.querySelector('.rightClickable');
 
+////////////////////
+
 window.addEventListener('resize', function(){
   sideImages();
 });
 
 left.addEventListener('click', function() {
+  console.log('left');
   sideImages();
+  // $('.slider').slick({
+  //   slickGoTo: 1
+  // });
 });
 
 right.addEventListener('click', function() {
+  console.log('right');
   sideImages();
 });
 ////////////////////
 if(window.innerWidth < 1200) {
   sideImages();
 }
-
-// // 'Help' Popover
-// $(function () {
-//   $('[data-toggle="popover"]').popover()
-// })
