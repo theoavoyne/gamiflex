@@ -48,6 +48,25 @@ body {
   }
 }
 
+#sign-in-link {
+  margin-top: 10px;
+  color: white;
+  opacity: 0.8;
+  font-weight: 300;
+  font-size: 18px;
+  a {
+    text-decoration: none;
+    color: #00A9A5;
+    font-weight: 400;
+    transition: all 0.3s;
+    &:hover {
+      text-decoration: none;
+      color: #00A9A5;
+      opacity: 0.7;
+    }
+  }
+}
+
 // INSIDE BANNER-TEXT
 
 .game-image {
