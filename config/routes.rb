@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   get '/profile', to: "pages#profile", as: 'profile'
   get '/mygames', to: "pages#mygames", as: 'mygames'
   get '/suggestions', to: "pages#suggestions", as: 'suggestions'
-
   get '/search', to: "games#search", as: 'search'
+  get '/choose_game', to: "pages#choose", as: 'choose'
 
   resources :games, only: [ :show ] do
     resources :states, only: [ :create, :destroy ]
