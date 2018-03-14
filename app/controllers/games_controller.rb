@@ -2,18 +2,26 @@ class GamesController < ApplicationController
   skip_before_action :authenticate_user!
 
   def show
+
+    # Public information
     @id = params[:id]
     @game = Game.find_with_igdb(@id)
     likes = State.where(game: @game, state: "like").count
     dislikes = State.where(game: @game, state: "dislike").count
-    @recommand = dislikes.zero? ? 1 : likes / dislikes.to_f
     @reviews = likes + dislikes
-    if user_signed_in? && !State.where(user: current_user, game: @game).exists?
-      @probability = (current_user.probability(@game) / 2) + 0.5
-      @show_btn = true
-      @state = State.new
-    else
-      @show_btn = false
+    @recommend = @reviews.zero? ? 0 : likes / (@reviews).to_f
+
+    # User needs to be signed in
+    if user_signed_in?
+      # Does the user already rated this game?
+      if State.where(user: current_user, game: @game).exists?
+        @show_btn = false
+        @state = State.where(user: current_user, game: @game).take.state
+        @probability = @state == "like" ? 1 : 0
+      else
+        @probability = (current_user.probability(@game) / 2) + 0.5
+        @show_btn = true
+      end
     end
     authorize @game
   end
