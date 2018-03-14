@@ -229,7 +229,7 @@
   <body class="plain error-page-wrapper background-color background-image">
     <div class="content-container">
   <div class="head-line secondary-text-color">
-    <strong>"A 500 error, oh snap!"</strong>
+    <strong>"A 503 error, oh snap!"</strong>
   </div>
   <div class="subheader primary-text-color">
     <em>Looks like we're having <br>
@@ -331,12 +331,12 @@
 
      ErrorPage.prototype.fetchStatus = function (pageUrl, pageType) {
        //console.log('in app.js fetch');
-       if (!pageUrl || !pageType || pageType == '500') return;
+       if (!pageUrl || !pageType || pageType == '503') return;
 
        var url = ''
          , self = this;
 
-       if (pageType == '500') {
+       if (pageType == '503') {
          url = pageUrl + '/api/v2/status.json';
        }
        else {
@@ -355,7 +355,7 @@
        });
 
      };
-     var ep = new ErrorPage('body', "500", "plain");
+     var ep = new ErrorPage('body', "503", "plain");
      ep.initialize();
 
      // hack to make sure content stays centered >_<
