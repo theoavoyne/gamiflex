@@ -1,16 +1,9 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-top_70 = %w(233 987 559 1628 6036 8173 533 1942 1020 20 239 127 501 72 7331 974 27081 1905 7360 121 2691 529 12517 11198 4754 36872 1331 2350 9061 434 7334 1029 472 1011 7351 11133 1968 885 7599 43 1164 9630 109 1985 866 1377 17447 11157 7292 7205 19470 3212 36847 26772 38 1981 3035 1267 960 11156 37094 114 4756 1802 37059 6732 4179 539 120 1062)
+# top_30 = %w(233 987 559 1628 6036 8173 533 1942 1020 20 239 127 501 72 7331 974 27081 1905 7360 121 2691 529 12517 11198 4754 36872 1331 2350 9061 434)
 
 User.destroy_all
 State.destroy_all
 
+# User Leo
 User.create!({
   first_name: "Leo",
   last_name: "Thomas",
@@ -18,6 +11,15 @@ User.create!({
   email: "leo@hotmail.com"
 })
 
+[866, 634, 310, 327, 239, 1184].each do |game|
+  State.create!({
+    user_id: User.last.id,
+    game: Game.find_with_igdb(game),
+    state: "like"
+  })
+end
+
+# User Capy
 User.create!({
   first_name: "Capy",
   last_name: "Bara",
@@ -25,6 +27,15 @@ User.create!({
   email: "elcapy@hotmail.com"
 })
 
+[7236, 21357, 7238].each do |game|
+  State.create!({
+    user_id: User.last.id,
+    game: Game.find_with_igdb(game),
+    state: "like"
+  })
+end
+
+# User Mister
 User.create!({
   first_name: "Mister",
   last_name: "Bean",
@@ -32,6 +43,15 @@ User.create!({
   email: "bean@hotmail.com"
 })
 
+[1985, 427, 11156, 7331, 37094, 1068, 1802, 26758, 7346, 740].each do |game|
+  State.create!({
+    user_id: User.last.id,
+    game: Game.find_with_igdb(game),
+    state: "like"
+  })
+end
+
+# User LeBron
 User.create!({
   first_name: "LeBron",
   last_name: "James",
@@ -39,6 +59,16 @@ User.create!({
   email: "lebron@hotmail.com"
 })
 
+[36847, 26772, 27081, 1020, 559, 1905, 529].each do |game|
+  State.create!({
+    user_id: User.last.id,
+    game: Game.find_with_igdb(game),
+    state: "like"
+  })
+end
+
+
+# User Nic
 User.create!({
   first_name: "Nic",
   last_name: "Fan",
@@ -46,13 +76,31 @@ User.create!({
   email: "nicfan@hotmail.com"
 })
 
+[233, 6036, 8173, 501, 20, 17447, 27081, 538, 1905, 11198].each do |game|
+  State.create!({
+    user_id: User.last.id,
+    game: Game.find_with_igdb(game),
+    state: "like"
+  })
+end
+
+# User Aanush
 User.create!({
-  first_name: "Aayush",
-  last_name: "Patel",
-  password: "aayush-password",
-  email: "aayush@yahoo.com"
+  first_name: "Aanush",
+  last_name: "Puttel",
+  password: "aanush-password",
+  email: "aanush@yahoo.com"
 })
 
+[36847, 26772, 27081, 1011, 7351, 740, 4179, 120].each do |game|
+  State.create!({
+    user_id: User.last.id,
+    game: Game.find_with_igdb(game),
+    state: "like"
+  })
+end
+
+# User Martin
 User.create!({
   first_name: "Martin",
   last_name: "G",
@@ -60,17 +108,26 @@ User.create!({
   email: "martin@hotmail.com"
 })
 
+[43305, 4176, 2110, 2192, 990, 75, 114, 2768, 3060, 4756].each do |game|
+  State.create!({
+    user_id: User.last.id,
+    game: Game.find_with_igdb(game),
+    state: "like"
+  })
+end
+
+# User Master
 User.create!({
   first_name: "Master",
   last_name: "Chief",
   password: "chief-password",
-  email: "john117@bungie.com"
+  email: "john117@hotmail.com"
 })
 
-30.times do
-  State.create({
-    user: User.all.sample,
-    game: Game.find_with_igdb(top_70.sample),
+[740, 986, 2591, 1638, 1089, 547, 71, 2342, 1628, 1074].each do |game|
+  State.create!({
+    user_id: User.last.id,
+    game: Game.find_with_igdb(game),
     state: "like"
   })
 end
