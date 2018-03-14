@@ -76,29 +76,46 @@
         console.info(data);
         searchBox.style.display = "block";
         searchBox.innerHTML = "";
+
         let index;
+
         for (index = 0; index < 5; index++) {
+
           let img;
           let release_dates;
+          let name;
+          let classplus = "";
+
           if (data[index]["cover"]) {
             img = `<img src="https:${data[index]["cover"]["url"]}">`
-
           } else {
             img = `<img src="http://blackandwhitesalon.hu/wp-content/uploads/2018/03/1520528222130.png">`
           };
+
           if (data[index]["release_dates"]) {
             release_dates = data[index]["release_dates"][0]["human"]
-
           } else {
             release_dates = `unknown`
           };
-          console.log(img)
+
+          if (release_dates != "unknown") {
+            name = `${data[index]["name"].substring(0,18)}.. (${release_dates.substring(0,4)})`
+          } else {
+            name = data[index]["name"].substring(0, 24)
+          }
+
+          if (index == 0) {
+            classplus = "search-top"
+          } else if (index == 4) {
+            classplus = "search-bottom"
+          }
+
           const item = `<a href="/games/${data[index]["id"]}" class="link-product">
-                          <div class="game-search">
+                          <div class="game-search ${classplus}">
                             ${img}
                             <div class="game-search-text">
-                              <p class="game-search-title">${data[index]["name"]}</p>
-                              <p class="game-search-date">${release_dates}</p>
+                              <p class="game-search-title">${name}</p>
+                              <p class="game-search-summary">${data[index]["summary"]}</p>
                             </div>
                           </div>
                         </a>`;
