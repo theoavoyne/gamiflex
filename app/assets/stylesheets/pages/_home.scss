@@ -5,7 +5,7 @@ body {
 
 #landing-band {
   width: 100vw;
-  height: calc(100vh - 80px);
+  height: calc(60vh);
   background-size: cover;
   display: flex;
   justify-content: space-around;
@@ -45,6 +45,25 @@ body {
     text-decoration: none;
     background-color: #049b94;
     cursor: pointer;
+  }
+}
+
+#sign-in-link {
+  margin-top: 10px;
+  color: white;
+  opacity: 0.8;
+  font-weight: 300;
+  font-size: 18px;
+  a {
+    text-decoration: none;
+    color: #00A9A5;
+    font-weight: 400;
+    transition: all 0.3s;
+    &:hover {
+      text-decoration: none;
+      color: #00A9A5;
+      opacity: 0.7;
+    }
   }
 }
 

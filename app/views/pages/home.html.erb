@@ -2,6 +2,20 @@
   <div id="landing-content">
     <h1>Gamiflex</h1>
     <h2>The Internet's most powerful algorithm for video game suggestions</h2>
-    <a href="/suggestions" id="landing-button" data-action="click->pages#suggestions"><div>Get Started</div></a>
+    <% if user_signed_in? %>
+      <% if policy(current_user).choose_games? %>
+        <a href="/choose_game" id="landing-button">Get Started</a>
+      <% elsif policy(current_user).suggest? %>
+        <a href="/suggestions" id="landing-button" class="run-loading">My next game</a>
+      <% end %>
+    <% else %>
+      <a href="/users/new_user_registration" id="landing-button">Sign up</a>
+      <p id="sign-in-link">
+        Already have an account? &nbsp
+        <%= link_to t(".sign_in", default: "Sign in") %>
+      </p>
+    <% end %>
   </div>
 </div>
+
+<%= render 'shared/top_rated', top_rated: @top_rated %>

@@ -81,7 +81,7 @@ function killInterval() {
 intervaux();
 
 let loadingContent = document.getElementById('loading-container');
-let button = document.getElementById('landing-button');
+let button = document.querySelector('.run-loading');
 
 if (button) {
   button.addEventListener("turbolinks:click", function(){
