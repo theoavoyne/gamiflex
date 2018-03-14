@@ -1,14 +1,9 @@
 import "slick-carousel";
 
-const next = document.getElementById('nextArrow');
-const prev = document.getElementById('prevArrow');
-const card = document.querySelectorAll('.item-carousel');
 ////////////////////
-
 /* Implement Slick function */
 $('.slider').slick({
-  prevArrow: '#prevArrow',
-  nextArrow: '#nextArrow',
+  arrows: false,
   slidesToShow: 6,
   slidesToScroll: 1,
   infinite: true,
@@ -34,11 +29,13 @@ $('.slider').slick({
   ]
 });
 
-////////////////////
-
 /* Apply style to side images*/
 function sideImages() {
   const active = document.querySelectorAll('.slick-active');
+  const makeClickable = document.querySelectorAll('.slick-active .item-carousel');
+  makeClickable[0].insertAdjacentHTML('afterbegin', `<div class="clickable leftClickable"></div>`);
+  makeClickable[makeClickable.length - 1].insertAdjacentHTML('afterbegin', `<div class="clickable rightClickable"></div>`);
+
   active.forEach(function(card) {
     if( card == active[active.length - 1] || card == active[0] ) {
       card.style.transition = 'all 1s';
@@ -46,24 +43,37 @@ function sideImages() {
       card.querySelector('.item-carousel').style.margin = '0 auto';
       card.style.paddingTop = '10px'; // modified
       card.style.paddingBottom = '10px'; // modified
+
     } else {
       card.style.opacity = '1';
       card.querySelector('.item-carousel').style.margin = '0';
       card.style.paddingTop = '0';
     }
   });
+
+  $('.leftClickable').click(function(){
+      $('.slider').slick('slickPrev');
+      $('div').remove('.clickable');
+      sideImages();
+    })
+
+  $('.rightClickable').click(function(){
+      $('.slider').slick('slickNext');
+      $('div').remove('.clickable');
+      sideImages();
+  })
 }
 
 sideImages();
 
-next.addEventListener('click', function() {
+///////////////////
+
+window.addEventListener('resize', function(){
   sideImages();
 });
 
-prev.addEventListener('click', function() {
-  sideImages();
-});
-////////////////////
+/////////////////////
+
 if(window.innerWidth < 1200) {
   sideImages();
 }
