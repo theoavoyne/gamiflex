@@ -13,6 +13,7 @@
   font-weight: 700;
   font-size: 40px;
   margin-top: 0;
+  margin-bottom: 8px;
 }
 
 .game-image.show {
@@ -36,7 +37,7 @@
 }
 
 .show-published {
-  margin-bottom: 12px;
+  margin-bottom: 0px;
   font-style: italic;
 }
 
@@ -60,5 +61,11 @@
 }
 
 .show-probability {
-  margin-bottom: 25px;
+  margin: 25px 0;
+}
+
+.show-state {
+  margin-top: 20px;
+  margin-bottom: 18px;
+  color: rgb(150, 150, 150)
 }
