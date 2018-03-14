@@ -11,7 +11,7 @@
 //= require paloma
 //= import "../carousel/slick.min";
 
-console.log('Hello World from Webpacker MOther Fucker!');
+console.log('Hello World from Webpacker mother fuckers!');
 
 import "bootstrap";
 
@@ -24,5 +24,4 @@ $('.btn-search').click(function(){
   if($('.searchbar').hasClass('clicked')){
     $('.btn-extended').focus();
   }
-
 });
