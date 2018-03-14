@@ -1,20 +1,26 @@
 <div class="profile-page">
   <div class="background-with-image" style="background-image: linear-gradient(-225deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('<%= image_path "photo5.jpeg"%>')">
     <img src="<%= current_user.photo_url ? cl_image_path(current_user.photo) : "http://www.unixstickers.com/image/data/stickers/guyfawkes/guyfawkes.sh.png" %>"   id="profile-image">
+    <%= link_to edit_user_registration_path, class: 'main-btn btn-edit-profile' do %>
+     Edit Profile <i class="fas fa-pencil-alt"></i>
+     <% end %>
   </div>
   <div class="info-profile">
     <h3><%= current_user.first_name %> <%= current_user.last_name %></h3>
+    <p>Proud to be a <strong>Gamiflex</strong> member since <strong><%= @date_creation %></strong></p>
     <p><%=  current_user.email %></p>
   </div>
   <div class="info-games-profile">
 
 
-      <p>I like <%= @nb_likes %>
+      <p>I liked <span class="nb-likes-or-dislikes"><%= @nb_likes %></span>
         <%= @nb_likes == 1 ? "game!" : "games!" %>
+        <i class="fa fa-thumbs-up" style="color: #23BA69;"></i>
       </p>
 
-      <p>I don't like <%= @nb_dislikes %>
+      <p>I didn't like <span class="nb-likes-or-dislikes"><%= @nb_dislikes %></span>
         <%= @nb_dislikes == 1 ? "game!" : "games!" %>
+        <i class="fa fa-thumbs-down" style="color: #F24236;"></i>
       </p>
 
       <p>The last game I played was <strong><%= @last_game.name %></strong> and I

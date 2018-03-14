@@ -25,6 +25,7 @@ class PagesController < ApplicationController
     @nb_dislikes = current_user.states.where(state: "dislike").count
     @last_game = current_user.games.last
     @state_last_game = current_user.states.where(game: @last_game).take
+    @date_creation = current_user.created_at.strftime("%B %d, %Y")
   end
 
   def mygames

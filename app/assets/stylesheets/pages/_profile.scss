@@ -24,6 +24,15 @@
   margin-top: 100px;
 }
 
+.btn-edit-profile {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  &:hover {
+    background-color: rgba(220, 220, 220, 0.2);
+  }
+}
+
 .photo-game-profile {
   height: 250px;
   width: 200px;
@@ -41,4 +50,8 @@
 
 .info-games-profile {
   padding: 20px;
+}
+
+.nb-likes-or-dislikes {
+  font-weight: bold;
 }
