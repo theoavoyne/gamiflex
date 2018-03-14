@@ -22,7 +22,7 @@ class GamesController < ApplicationController
     authorize(Game)
     query =params[:query]
 
-    url = "https://api-endpoint.igdb.com/games/?search=#{query}&fields=name,cover.url,release_dates.human"
+    url = "https://api-endpoint.igdb.com/games/?search=#{query}&fields=name,cover.url,release_dates.human,summary"
     headers = {
       "user-key" => ENV["user_key"],
       "Accept" => "application/json"

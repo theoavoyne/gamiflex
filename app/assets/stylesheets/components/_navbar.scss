@@ -100,10 +100,9 @@
 
 #search-box {
   position: absolute;
-  height: 330px;
+  height: 320px;
   width: 250px;
   background-color: white;
-  padding: 15px;
   top: 80px;
   display: none;
   z-index: 10;
@@ -111,26 +110,25 @@
 
 .game-search {
   display: flex;
-  padding: 5px 0;
+  padding: 5px 15px;
   height: 60px;
   background-color: rgba(0, 0, 0, 0);
   transition: background-color 0.3s;
   color: rgb(51, 51, 51);
   img {
-    height: 100%;
+    height: 50px;
     width: 40px;
+    object-fit: cover;
   };
   &:hover {
     background-color: rgba(0, 0, 0, 0.1);
-  }
+  };
 }
 
 .game-search-text {
   color: rgb(51, 51, 51);
-  border-bottom: 1px solid rgb(230, 230, 230);
   width: calc(220px - 47px);
-  height: 50px;
-  margin-left: 7px;
+  margin-left: 10px;
 }
 
 .game-search-title {
@@ -138,14 +136,15 @@
   line-height: 15px;
   font-weight: 700;
   margin-bottom: 0px;
-  height: 30px;
+  height: 20px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.game-search-date {
+.game-search-summary {
   font-size: 12px;
-  margin-left: 2px;
+  height: 35px;
+  overflow: hidden;
   text-overflow: ellipsis;
 }
 
@@ -154,4 +153,14 @@
   &:hover {
     text-decoration: none;
   }
+}
+
+.search-top {
+  height: 70px;
+  padding-top: 10px;
+}
+
+.search-bottom {
+  height: 70px;
+  padding-bottom: 10px;
 }
