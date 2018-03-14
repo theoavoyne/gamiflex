@@ -53,12 +53,12 @@
   align-items: center;
 }
 
-#prevArrow,  #nextArrow {
+.rightClickable,  .leftClickable {
   visibility: visible !important;
   font-size: 50px;
   opacity: 0.7;
 }
-#prevArrow:hover, #nextArrow:hover {
+.rightClickable:hover, .leftClickable:hover {
   opacity: 1;
   cursor: pointer;
 }
@@ -68,21 +68,30 @@
   box-shadow: 10px 5px 30px rgba(0, 0, 0, 0.5);
 }
 
-#nextArrow {
+.leftClickable {
   position: absolute;
   z-index: 99;
-  height: 208px;
-  width: 21vw;
-  top: calc(60% - 100px);
-  right: 0;
+  // height: 208px;
+  // width: 21vw;
+  // top: calc(60% - 100px);
+  // right: 0;
 }
 
-#prevArrow {
+.rightClickable {
   position: absolute;
   z-index: 99;
-  height: 208px;
-  width: 142px;
-  width: 21vw;
-  top: calc(60% - 100px);
+  // height: 208px;
+  // width: 142px;
+  // width: 21vw;
+  // top: calc(60% - 100px);
+  // left: 0;
+}
+
+.non-clickable {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: red;
   left: 0;
+  right: 0;
 }

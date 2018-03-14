@@ -1,14 +1,14 @@
 import "slick-carousel";
 
-const next = document.getElementById('nextArrow');
-const prev = document.getElementById('prevArrow');
-const card = document.querySelectorAll('.item-carousel');
+const left = document.querySelector('.leftClickable');
+const right = document.querySelector('.rightClickable');
+const cards = document.querySelectorAll('.item-carousel');
 ////////////////////
 
 /* Implement Slick function */
 $('.slider').slick({
-  prevArrow: '#prevArrow',
-  nextArrow: '#nextArrow',
+  prevArrow: '.rightClickable',
+  nextArrow: '.leftClickable',
   slidesToShow: 6,
   slidesToScroll: 1,
   infinite: true,
@@ -38,7 +38,9 @@ $('.slider').slick({
 
 /* Apply style to side images*/
 function sideImages() {
+  spanClickResize();
   const active = document.querySelectorAll('.slick-active');
+
   active.forEach(function(card) {
     if( card == active[active.length - 1] || card == active[0] ) {
       card.style.transition = 'all 1s';
@@ -46,6 +48,7 @@ function sideImages() {
       card.querySelector('.item-carousel').style.margin = '0 auto';
       card.style.paddingTop = '10px'; // modified
       card.style.paddingBottom = '10px'; // modified
+      console.log(card)
     } else {
       card.style.opacity = '1';
       card.querySelector('.item-carousel').style.margin = '0';
@@ -56,16 +59,43 @@ function sideImages() {
 
 sideImages();
 
-next.addEventListener('click', function() {
+function spanClickResize() {
+  const active = document.querySelectorAll('.slick-active img');
+  var rectLeft = active[0].getBoundingClientRect();
+  var rectRight = active[active.length - 1].getBoundingClientRect();
+
+  left.style.width = `${active[0].offsetWidth}px`;
+  right.style.width = `${active[active.length - 1].offsetWidth}px`;
+  left.style.height = `${active[0].offsetHeight}px`;
+  right.style.height = `${active[active.length - 1].offsetHeight}px`;
+
+  left.style.bottom = `calc(100vh - ${rectRight.bottom}px)`;
+  right.style.bottom = `calc(100vh - ${rectLeft.bottom}px)`;
+  left.style.left = `${rectLeft.left}px`;
+  right.style.left = `${rectRight.left}px`;
+
+  left.style.backgroundColor = `blue`;
+  right.style.backgroundColor = `red`;
+
+}
+
+spanClickResize();
+
+window.addEventListener('resize', function(){
   sideImages();
 });
 
-prev.addEventListener('click', function() {
+left.addEventListener('click', function() {
+  sideImages();
+});
+
+right.addEventListener('click', function() {
   sideImages();
 });
 ////////////////////
 if(window.innerWidth < 1200) {
   sideImages();
+  spanClickResize();
 }
 
 // 'Help' Popover

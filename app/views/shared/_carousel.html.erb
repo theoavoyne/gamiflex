@@ -5,13 +5,14 @@
       ?
     </button>
   </div>
-  <span id="nextArrow"></span>
-  <span id="prevArrow"></span>
+  <span class="rightClickable"></span>
+  <span class="leftClickable"></span>
   <div id="slider" class="slider">
     <% games.each do |game| %>
       <div>
         <div class="item-wrapper">
           <div id="<%= game.id %>" class="item-carousel">
+            <div class="non-clickable"></div>
             <%= cl_image_tag game.photo , class: "item-image"%>
             <div class="game-filter"></div>
             <div class="game-links">
