@@ -12,10 +12,21 @@
 }
 
 .item-image {
-  max-height: 25vh;
   margin: 0 auto;
+  max-height: 15vw;
 }
 
+@media screen and (max-width: 900px) {
+  .item-image {
+    max-height: 21vw;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .item-image {
+    max-height: 27vw;
+  }
+}
 
 /* Filter with thumbs-up/thumbs-down to display once the user has clicked on "like"/"dislike" */
 .rated-like {
@@ -114,4 +125,24 @@
     background-color: rgba(220, 220, 220, 1);
     color: crimson;
   }
+}
+
+@media screen and (max-width: 900px) {
+  .item-image {
+    max-height: 21vw;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .item-image {
+    max-height: 27vw;
+  }
+}
+
+.aayush {
+  height: 5px;
+  width: 5px;
+  position: absolute;
+  top: 280px;
+  right: 210px;
 }

@@ -19,33 +19,19 @@
       </div>
     </div>
 
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Contact</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link last-link">About</a>
+    <a href="/mygames" class="navbar-wagon-item navbar-wagon-link">My games</a>
+    <a href="/profile" class="navbar-wagon-item navbar-wagon-link">Profile</a>
+    <% if user_signed_in? %>
+      <%= link_to "Log out", destroy_user_session_path, class: "navbar-wagon-item navbar-wagon-link last-link", method: :delete %>
+    <% end %>
 
     <!-- Profile picture with dropdown list -->
     <% if user_signed_in? %>
-      <div class="navbar-wagon-item">
-        <div class="dropdown">
-          <img src="<%= current_user.photo_url ? cl_image_path(current_user.photo) : "http://www.unixstickers.com/image/data/stickers/guyfawkes/guyfawkes.sh.png" %>" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-              <%= link_to profile_path do %>
-                <i class="fa fa-user"></i><span class="dropdown-link">Profile</span>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to mygames_path do %>
-                <i class="fa fa-gamepad"></i><span class="dropdown-link">My games</span>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i><span class="dropdown-link">Log out</span>
-              <% end %>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <% if policy(current_user).choose_games? %>
+        <a href="/choose_game" class="main-btn">My next game</a>
+      <% elsif policy(current_user).suggest? %>
+        <a href="/suggestions" class="main-btn run-loading">My next game</a>
+      <% end %>
     <% else %>
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "main-btn" %>
     <% end %>

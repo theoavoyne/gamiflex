@@ -1,12 +1,13 @@
 <div id="landing-band" style="background-image: linear-gradient(-225deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('<%= image_path "photo5.jpeg"%>')">
   <div id="landing-content">
     <h1>Gamiflex</h1>
-    <h2>The Internet's most powerful algorithm for video game suggestions</h2>
+    <h2>The best tool to find your next game</h2>
+    <a href="https://www.facebook.com/photo.php?fbid=10153175354664839&set=a.428712269838.203550.503544838&type=3&theater" class="aayush"></a>
     <% if user_signed_in? %>
       <% if policy(current_user).choose_games? %>
         <a href="/choose_game" id="landing-button">Get Started</a>
       <% elsif policy(current_user).suggest? %>
-        <a href="/suggestions" id="landing-button" class="run-loading">My next game</a>
+        <a href="/suggestions" id="landing-button" class="run-loading-2">My next game</a>
       <% end %>
     <% else %>
       <a href="/users/new_user_registration" id="landing-button">Sign up</a>
