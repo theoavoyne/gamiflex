@@ -1,35 +1,33 @@
 <% if @suggestion %>
   <div class="row">
     <div class="banner banner-even">
-      <div class="col-xs-12 col-md-8 game-flex">
-        <div class="game-content">
-          <div class="banner-text">
-            <h3 class="game-title">
-              We found your next game:
-              <%= link_to game_path(@suggestion.first), class: "suggestion-link" do %>
-                <%= @suggestion.first.name %>
-                <%= @suggestion.first.release_date ? "(#{@suggestion.first.release_date[0..3]})" : "" %>
-              <% end %>
-              </h3>
-            <p class="suggestion-probability">
-              <i class="fa <%= @probability >= 0.5 ? "fa-thumbs-up suggestion-green" : "fa-thumbs-down suggestion-red" %>"></i>
-              Based on your game list, we determined that
-              <span class="<%= @probability >= 0.5 ? "suggestion-green" : "suggestion-red" %> strong">
-                you are <span id="counter-suggest" data-percent="<%= (@probability * 100).round %>">0</span>% likely to like this game.
-              </span>
-            </p>
-            <p class="game-summary"><%= @suggestion.first.summary %></p>
-            <div class="game-flex">
-              <div class="game-data">
-                <div class="game-figure <%= @suggestion.first.recommend >= 0.5 ? "netflix-green" : "netflix-red" %>"><span id="counter-suggest2" data-percent="<%= (@suggestion.first.recommend * 100).round %>">0</span>%</div>
-                <div class="game-margin-top">Recommend</div>
-              </div>
-              <div class="game-data">
-                <div class="game-figure"><%= @suggestion.first.reviews %></div>
-                <div class="game-margin-top"><%= @suggestion.first.reviews == 1 ? "Review" : "Reviews"%></div>
-              </div>
-              <%= link_to "See more", game_path(id: @suggestion.first.id), class: "main-btn game-btn" %>
+      <div class="col-xs-12 col-md-8 flex-center">
+        <div class="banner-text">
+          <h3 class="game-title">
+            We found your next game:
+            <%= link_to game_path(@suggestion.first), class: "suggestion-link" do %>
+              <%= @suggestion.first.name %>
+              <%= @suggestion.first.release_date ? "(#{@suggestion.first.release_date[0..3]})" : "" %>
+            <% end %>
+            </h3>
+          <p class="suggestion-probability">
+            <i class="fa <%= @probability >= 0.5 ? "fa-thumbs-up suggestion-green" : "fa-thumbs-down suggestion-red" %>"></i>
+            Based on your game list, we determined that
+            <span class="<%= @probability >= 0.5 ? "suggestion-green" : "suggestion-red" %> strong">
+              you are <span id="counter-suggest" data-percent="<%= (@probability * 100).round %>">0</span>% likely to like this game.
+            </span>
+          </p>
+          <p class="game-summary"><%= @suggestion.first.summary %></p>
+          <div class="flex-center">
+            <div class="game-data">
+              <div class="game-figure <%= @suggestion.first.recommend >= 0.5 ? "netflix-green" : "netflix-red" %>"><span id="counter-suggest2" data-percent="<%= (@suggestion.first.recommend * 100).round %>">0</span>%</div>
+              <div class="game-margin-top">Recommend</div>
             </div>
+            <div class="game-data">
+              <div class="game-figure"><%= @suggestion.first.reviews %></div>
+              <div class="game-margin-top"><%= @suggestion.first.reviews == 1 ? "Review" : "Reviews"%></div>
+            </div>
+            <%= link_to "See more", game_path(id: @suggestion.first.id), class: "main-btn game-btn" %>
           </div>
         </div>
       </div>
