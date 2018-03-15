@@ -10,7 +10,7 @@ $('.slider').slick({
   speed: 1000,
   responsive: [
     {
-      breakpoint: 900,
+      breakpoint: 1000,
       settings: {
         slidesToShow: 4,
         slidesToScroll: 1,

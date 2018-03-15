@@ -7,34 +7,36 @@
   </div>
   <div class="info-profile">
     <h3><%= current_user.first_name %> <%= current_user.last_name %></h3>
-    <p>Proud to be a <strong>Gamiflex</strong> member since <strong><%= @date_creation %></strong></p>
     <p><%=  current_user.email %></p>
+    <p>Proud to be a <strong style="color: #32B796;">Gamiflex</strong> member since <strong><%= @date_creation %></strong></p>
   </div>
-  <div class="info-games-profile">
 
-
-      <p>I liked <span class="nb-likes-or-dislikes"><%= @nb_likes %></span>
-        <%= @nb_likes == 1 ? "game!" : "games!" %>
-        <i class="fa fa-thumbs-up" style="color: #23BA69;"></i>
+  <div class="row profile-row row-with-likes-and-dislikes">
+    <div class="col-xs-3 col-sm-2">
+      <i class="fa fa-thumbs-up" style="color: #23BA69;"></i>
+      <p>I liked</p>
+      <p><p class="nb-likes-or-dislikes"><%= @nb_likes %></p></p>
+      <p><%= @nb_likes == 1 ? "game!" : "games!" %></p>
+    </div>
+    <div class="col-xs-3 col-sm-2">
+      <i class="fa fa-thumbs-down" style="color: #F24236;"></i>
+      <p>I didn't like</p>
+      <p><p class="nb-likes-or-dislikes"><%= @nb_dislikes %></p></p>
+      <p><%= @nb_dislikes == 1 ? "game!" : "games!" %>
       </p>
+    </div>
+  </div>
 
-      <p>I didn't like <span class="nb-likes-or-dislikes"><%= @nb_dislikes %></span>
-        <%= @nb_dislikes == 1 ? "game!" : "games!" %>
-        <i class="fa fa-thumbs-down" style="color: #F24236;"></i>
-      </p>
-
-      <p>The last game I played was <strong><%= @last_game.name %></strong> and I
-        <% if @state_last_game.state == "like" %>
-          liked it!
-        <% else %>
-          didn't like it!
-        <% end %>
-      </p>
-
-      <div class="photo-game-profile" style="background-image: url('<%= cl_image_path @last_game.photo %>')">
-        <%= link_to '', game_path(@last_game) %>
-      </div>
+  <div class="row profile-row last-games-played">
+      <h2>The last 3 games I played</h2>
+       <% @last_games.each do |last_game| %>
+        <div class="col-xs-12 col-md-4">
+          <%= link_to game_path(last_game) do %>
+            <%= cl_image_tag(last_game.photo, height: 250, crop: 'scale', class: "photo-game-profile") %>
+          <% end %>
+        </div>
+      <% end %>
       <%= link_to 'See All My Games', mygames_path, class: 'main-btn' %>
-
+    </div>
   </div>
 </div>
