@@ -1,0 +1,17 @@
+.scrollToTop {
+  z-index: 99;
+  color: rgb(0,172,167);
+  text-decoration: none;
+  position: fixed;
+  top: 50px;
+  left: 15px;
+  display: none;
+  font-size: 50px;
+  opacity: 0.8;
+  &:hover {
+    cursor: pointer;
+    text-decoration: none;
+    color: rgb(0,172,167);
+    opacity: 0.9;
+  }
+}
