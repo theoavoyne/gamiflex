@@ -82,9 +82,17 @@ intervaux();
 
 let loadingContent = document.getElementById('loading-container');
 let button = document.querySelector('.run-loading');
+let button2 = document.querySelector('.run-loading-2');
 
 if (button) {
   button.addEventListener("turbolinks:click", function(){
+    loadingContent.style.display = 'block';
+    intervaux();
+  });
+}
+
+if (button2) {
+  button2.addEventListener("turbolinks:click", function(){
     loadingContent.style.display = 'block';
     intervaux();
   });
