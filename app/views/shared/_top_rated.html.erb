@@ -1,19 +1,23 @@
-<!-- Carousel here using @top rated -->
+<h3 class="title-carousel-home">Top rated games</h3>
 
-<br>
-<br>
-<br>
+<div class="wraper-carousel-home-1">
+  <div class="autoplay-top-rated">
+    <% @top_rated.each do |game| %>
+      <%= link_to game_path(game) do %>
+        <%= cl_image_tag(game.photo, height: 250, crop: 'scale') %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
 
-<%= @top_rated %>
-
-<br>
-<br>
-<br>
-
-<%= @currently_consulted %>
-
-<br>
-<br>
-<br>
-
+<div class="wraper-carousel-home-2">
+  <h3 class="title-carousel-home">Games currently being viewed</h3>
+  <div class="autoplay-currently-consulted">
+    <% @currently_consulted.each do |game| %>
+      <%= link_to game_path(game) do %>
+        <%= cl_image_tag(game.photo, height: 250, crop: 'scale') %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
 <%= javascript_pack_tag 'top_rated', media: 'all', 'data-turbolinks-track': 'reload' %>
