@@ -1,14 +1,16 @@
-// INSIDE BANNER-TEXT
+// COMMON
+
+.banner {
+  min-height: 600px;
+  overflow: hidden;
+}
+
+// TOP BANNER
 
 .game-image {
   max-width: 320px;
   box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.15);
   margin-right: 25%;
-}
-
-.banner {
-  height: 600px;
-  overflow: hidden;
 }
 
 .banner-odd {
