@@ -1,18 +1,78 @@
-<h1>The games I liked</h1>
-<ul>
-  <% current_user.states.where(state: "like").each do |state| %>
-    <li>
-      <%= state.game.name %>
-      <%= link_to("Remove", game_state_path(state.game, state), :method => :delete) %>
-    </li>
-  <% end %>
-</ul>
-<h1>The games I disliked</h1>
-<ul>
-  <% current_user.states.where(state: "dislike").each do |state| %>
-    <li>
-      <%= state.game.name %>
-      <%= link_to("Remove", game_state_path(state.game, state), :method => :delete) %>
-    </li>
-  <% end %>
-</ul>
+<div class="mygames-background">
+  <div class="mygames-container">
+
+    <!-- Display Games that the user has liked -->
+    <div class="mygames-section">
+
+      <!-- Title Section -->
+      <div class="section-title font-liked">
+        <h1>Games I liked</h1>
+      </div>
+      <div class="section-note">
+        <p><em>Need at least 5 games here for the Gamiflex algorithm to provide a tailor-made suggestion!</em></p>
+      </div>
+
+      <!-- Games Section -->
+      <div class="section-games">
+        <div class="row">
+          <% @liked.each do |state| %>
+          <div class="col-sm-4">
+            <div class="game-container">
+              <div>
+                <div class="gamephoto-container">
+                  <%= link_to game_path(state.game_id), class: "mygame-link" do %>
+                    <%= cl_image_tag state.game.photo, class: "gamephoto" %>
+                  <% end %>
+                  <%= link_to game_state_path(state.game, state), :method => :delete, class: 'delete-game-button' do %>
+                    <i class="fas fa-ban"></i>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- Display Games that the user has disliked -->
+    <div class="mygames-section">
+
+      <!-- Title Section -->
+      <div class="section-title font-disliked">
+        <h1>Games I didn't like</h1>
+      </div>
+      <div class="section-note">
+        <p><em>The Gamiflex algorithm will take these games in consideration to provide an improved suggestion for your next game!</em></p>
+      </div>
+
+      <!-- Games Section -->
+      <div class="section-games">
+        <div class="row">
+          <% @disliked.each do |state| %>
+          <div class="col-sm-4">
+            <div class="game-container">
+              <div>
+                <div class="gamephoto-container">
+                  <%= link_to game_path(state.game_id), class: "mygame-link" do %>
+                    <%= cl_image_tag state.game.photo, class: "gamephoto" %>
+                  <% end %>
+                  <%= link_to game_state_path(state.game, state), :method => :delete, class: 'delete-game-button' do %>
+                    <i class="fas fa-ban"></i>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
