@@ -131,6 +131,10 @@ body {
   margin-bottom: 30px;
   margin-left: 20px;
 }
+a:focus {
+  text-decoration: none !important;
+  color: white;
+}
 
 .game-friend.odd {
   margin-left: 0;
@@ -156,4 +160,10 @@ body {
   padding-top: 1px;
 }
 
-
+.footer-links {
+  color: white;
+  font-size: 30px;
+  i {
+    margin: 0 5px;
+  }
+}
