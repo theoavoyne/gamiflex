@@ -22,12 +22,12 @@ function changeImage() {
   }
 }
 
-const operationNames = ['Compiling data...', 'Receiving...', 'Standardizing...', 'Crossing user data...', 'Sorting...']
+const operationNames = ['Compiling data...', 'Receiving...', 'Standardizing...', 'Standardizing...', 'Crossing user data...', 'Sorting...']
 
 let e = 0;
 function operations() {
   operation.innerText = `${operationNames[e]}`;
-  if (e != 4) {
+  if (e != (5)) {
     e += 1;
   };
 }
@@ -35,7 +35,7 @@ function operations() {
 let g = 0;
 function comparing() {
   comparingText.innerText = `${backtick(g)}`;
-  g += Math.floor(Math.random() * 500);
+  g += Math.floor(Math.random() * 3000);
 }
 
 function backtick(number) {
@@ -66,8 +66,8 @@ let interval5 = null;
 function intervaux() {
   interval1 = setInterval(moveLineRight, 80);
   interval2 = setInterval(operations, 1200);
-  interval3 = setInterval(comparing, 30);
-  interval4 = setInterval(changeImage, 100);
+  interval3 = setInterval(comparing, 10);
+  interval4 = setInterval(changeImage, 85);
 }
 
 function killInterval() {
