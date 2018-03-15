@@ -1,5 +1,7 @@
 import "slick-carousel";
-
+//= require turbolinks
+var Turbolinks = require("turbolinks")
+Turbolinks.start()
 ////////////////////
 /* Implement Slick function */
 $('.slider').slick({

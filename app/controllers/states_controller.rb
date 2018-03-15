@@ -10,7 +10,6 @@ class StatesController < ApplicationController
       redirect_to game_path(@game_id)
     elsif @state.save
       if params[:state] == "like"
-        @remaining = 5 - current_user.states.where(state: 'like').length
       end
       respond_to do |format|
         format.html { redirect_to root_path }
@@ -22,6 +21,7 @@ class StatesController < ApplicationController
         format.js
       end
     end
+    @remaining = 5 - current_user.states.length
   end
 
   def destroy

@@ -9,6 +9,20 @@ document.getElementById("<%= @game_id %>").querySelector(".game-links").remove()
   document.getElementById("<%= @game_id %>").querySelector(".game-filter").classList.add("rated-dislike");
 <% end %>
 
-<% if @state.state == "like" %>
-  document.getElementById("counter").innerHTML = "<%= @remaining %>"
+<% if @remaining > 0 %>
+  document.getElementById("title-counter").innerHTML = `<strong>Tell us what games you like | <%= @remaining %> remaining</strong>`
+<% else %>
+  document.getElementById("title-counter").innerHTML = `<strong><%= -@remaining + 5 %> games selected</strong>`;
+<% end %>
+
+<% if @remaining == 0 %>
+  document.querySelector('.choose-btn-container').innerHTML = `<a href="/suggestions" class="main-btn suggestion-available run-loading-3">Run the algorithm</a>`;
+  let contentLoading = document.getElementById('loading-container');
+  let button3 = document.querySelector('.run-loading-3');
+    if (button3) {
+    button3.addEventListener("turbolinks:click", function(){
+      contentLoading.style.display = 'block';
+      intervaux();
+    });
+  }
 <% end %>

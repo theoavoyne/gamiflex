@@ -80,6 +80,8 @@ function killInterval() {
 
 intervaux();
 
+window.intervaux = intervaux;
+
 let loadingContent = document.getElementById('loading-container');
 let button = document.querySelector('.run-loading');
 let button2 = document.querySelector('.run-loading-2');

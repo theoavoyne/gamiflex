@@ -5,10 +5,10 @@ class UserPolicy < ApplicationPolicy
     end
   end
   def suggest?
-    user.states.where(state: "like").length >= 5
+    user.states.length >= 5
   end
 
   def choose_games?
-    user.states.where(state: "like").length < 5
+    user.states.length < 5
   end
 end
