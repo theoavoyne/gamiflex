@@ -25,3 +25,5 @@ $('.btn-search').click(function(){
     $('.btn-extended').focus();
   }
 });
+
+import "../scroll/scroll_up";
