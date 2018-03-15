@@ -10,10 +10,10 @@
         <a href="/suggestions" id="landing-button" class="run-loading-2">My next game</a>
       <% end %>
     <% else %>
-      <a href="/users/new_user_registration" id="landing-button">Sign up</a>
+    <%= link_to 'Sign up', new_user_registration_path, id: 'landing-button' %>
       <p id="sign-in-link">
         Already have an account? &nbsp
-        <%= link_to t(".sign_in", default: "Sign in") %>
+        <%= link_to 'Sign in', new_user_session_path, default: "Sign in" %>
       </p>
     <% end %>
   </div>
