@@ -38,7 +38,7 @@ class PagesController < ApplicationController
       @games = game_list.map do |game|
         Game.find_with_igdb(game)
       end
-      @remaining = 5 - current_user.states.where(state: 'like').length
+      @remaining = 5 - current_user.states.length
     else
       redirect_to suggestions_path
     end

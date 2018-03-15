@@ -1,6 +1,10 @@
 <div id="game-carousel" class="slider-container">
   <div class="title-container">
-    <h2 class="title"><strong>Tell us the games you like | <span id="counter"><%= remaining %></span> remaining</strong></h2>
+    <% if @remaining > 0 %>
+      <h2 class="title"><strong>Tell us what games you like | <span id="counter"><%= @remaining %></span> remaining</strong></h2>
+    <% else %>
+      <h2 class="title"><span id="counter"><%= @remaining %></span> selected</strong></h2>
+    <% end %>
   </div>
   <div id="slider" class="slider">
     <% games.each do |game| %>
