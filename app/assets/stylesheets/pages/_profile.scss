@@ -21,23 +21,22 @@
 }
 
 .info-profile {
-  margin-top: 100px;
+  width: 45%;
+  margin: 120px auto 0;
 }
 
 .btn-edit-profile {
   position: absolute;
   top: 20px;
-  left: 20px;
+  left: 30px;
   &:hover {
     background-color: rgba(220, 220, 220, 0.2);
   }
 }
 
 .photo-game-profile {
-  height: 250px;
-  width: 200px;
-  background-size: cover;
-  margin: 20px auto;
+  margin-bottom: 65px;
+  box-shadow: 8px 8px 12px rgba(0,0,0,0.2);
   a {
     display: block;
     height: 100%;
@@ -49,9 +48,30 @@
 }
 
 .info-games-profile {
-  padding: 20px;
+  padding: 75px;
 }
 
 .nb-likes-or-dislikes {
+  background-color: rgba(11,83,81,0.1);
   font-weight: bold;
+  font-size: 36px;
+  box-shadow: 1px 1px 1px rgba(200,200,200,0.3);
+}
+
+.row-with-likes-and-dislikes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.last-games-played {
+  background-color: rgba(11,83,81,0.1);
+}
+
+.profile-row {
+  padding: 50px;
+  h2 {
+    margin: -20px 0 50px 0;
+    font-weight: bold;
+  }
 }

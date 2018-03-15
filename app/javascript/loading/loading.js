@@ -39,7 +39,7 @@ function comparing() {
 }
 
 function backtick(number) {
-  if (number > 1000) {
+  if (number > 3000) {
     return (new Intl.NumberFormat().format(number));
   }
 }

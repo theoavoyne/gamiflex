@@ -2,6 +2,15 @@ class Game < ApplicationRecord
   validates :id, presence: true
   validates :name, presence: true
 
+  def recommend
+    likes = State.where(state: "like", game: self).count
+    return self.reviews.zero? ? 0 : likes / ( self.reviews )
+  end
+
+  def reviews
+    State.where(game: self).count
+  end
+
   class << self
     def find_with_igdb(game_id)
 
