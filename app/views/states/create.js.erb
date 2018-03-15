@@ -12,7 +12,7 @@ document.getElementById("<%= @game_id %>").querySelector(".game-links").remove()
 <% if @remaining > 0 %>
   document.getElementById("title-counter").innerHTML = `<strong>Tell us what games you like | <%= @remaining %> remaining</strong>`
 <% else %>
-  document.getElementById("title-counter").innerHTML = `<strong><%= -@remaining + 5 %> selected</strong>`;
+  document.getElementById("title-counter").innerHTML = `<strong><%= -@remaining + 5 %> games selected</strong>`;
 <% end %>
 
 <% if @remaining == 0 %>
