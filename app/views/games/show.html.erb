@@ -14,7 +14,7 @@
         <% end %>
 
         <p class="strong <%= @recommend >= 0.5 ? "netflix-green" : "netflix-red" %>">
-          <span id="couter-show-game" data-percent="<%= (@recommend * 100).round %>">0</span>% recommend this game!
+          <span id="counter-show-game" data-percent="<%= (@recommend * 100).round %>">0</span>% recommend this game!
           <span style="font-weight: 400; color: rgb(50, 50, 50)"> (<%= @reviews %> <%= @reviews == 1 ? "review" : "reviews"%>)</span>
         </p>
 
@@ -56,7 +56,7 @@
               <i class="fa <%= @probability >= 0.5 ? "fa-thumbs-up netflix-green" : "fa-thumbs-down netflix-red" %>"></i>
               Based on all the games you played so far,
               <span class="<%= @probability >= 0.5 ? "netflix-green" : "netflix-red" %> strong">
-                you are <span id="couter-show-game-2" data-percent="<%= (@probability * 100).round %>">0</span>% likely to like this game.
+                you are <span id="counter-show-game-2" data-percent="<%= (@probability * 100).round %>">0</span>% likely to like this game.
               </span>
             </p>
           <% else %>

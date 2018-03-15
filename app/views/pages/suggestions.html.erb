@@ -15,13 +15,13 @@
               <i class="fa <%= @probability >= 0.5 ? "fa-thumbs-up suggestion-green" : "fa-thumbs-down suggestion-red" %>"></i>
               Based on your game list, we determined that
               <span class="<%= @probability >= 0.5 ? "suggestion-green" : "suggestion-red" %> strong">
-                you are <%= (@probability * 100).round %>% likely to like this game.
+                you are <span id="counter-suggest" data-percent="<%= (@probability * 100).round %>">0</span>% likely to like this game.
               </span>
             </p>
             <p class="game-summary"><%= @suggestion.first.summary %></p>
             <div class="game-flex">
               <div class="game-data">
-                <div class="game-figure <%= @suggestion.first.recommend >= 0.5 ? "netflix-green" : "netflix-red" %>"><%= (@suggestion.first.recommend * 100).round %>%</div>
+                <div class="game-figure <%= @suggestion.first.recommend >= 0.5 ? "netflix-green" : "netflix-red" %>"><span id="counter-suggest2" data-percent="<%= (@suggestion.first.recommend * 100).round %>">0</span>%</div>
                 <div class="game-margin-top">Recommend</div>
               </div>
               <div class="game-data">
@@ -54,3 +54,5 @@
     </div>
   </div>
 <% end %>
+
+<%= javascript_pack_tag 'suggestions', media: 'all', 'data-turbolinks-track': 'reload' %>
