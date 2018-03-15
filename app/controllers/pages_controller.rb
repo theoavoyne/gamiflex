@@ -20,6 +20,8 @@ class PagesController < ApplicationController
   end
 
   def mygames
+    @liked = current_user.states.where(state: "like")
+    @disliked = current_user.states.where(state: "dislike")
   end
 
   def suggestions
