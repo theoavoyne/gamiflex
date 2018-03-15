@@ -1,0 +1,145 @@
+// INSIDE BANNER-TEXT
+
+.game-image {
+  max-width: 320px;
+  box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.15);
+  margin-right: 25%;
+}
+
+.banner {
+  height: 600px;
+  overflow: hidden;
+}
+
+.banner-odd {
+  height: 500px;
+  display: flex;
+  align-items: center;
+}
+
+.img-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 600px;
+}
+
+.game-content {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+}
+
+.banner-text {
+  padding: 80px;
+}
+
+.banner-text.odd {
+  text-align: right;
+}
+
+.banner-even {
+  background-color: #96ACB7;
+}
+
+.game-title {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-weight:700;
+  max-height: 105px;
+}
+
+.game-summary {
+  max-height: 160px;
+  line-height: 150%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 20px;
+}
+
+.game-data {
+  font-weight:400;
+  display: flex;
+  align-items: flex-end;
+  text-align: center;
+  margin-right: 32px;
+}
+
+.game-figure {
+  font-weight: 700;
+  padding: 15px 12px;
+  width: 90px;
+  background-color: rgb(230, 230, 230);
+  border-radius: 3px;
+}
+
+.game-friend {
+  margin-bottom: 30px;
+  margin-left: 20px;
+}
+a:focus {
+  text-decoration: none !important;
+  color: white;
+}
+
+.game-friend.odd {
+  margin-left: 0;
+  margin-right: 20px;
+}
+
+.friend-name {
+  color: #395CA9;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.suggestion-probability {
+  margin: 25px 0;
+  font-weight: 700;
+}
+
+.suggestion-green {
+  color: #005552;
+  font-weight: 800;
+}
+
+.suggestion-red {
+  color: #F24236;
+}
+
+.suggestion-link {
+  color: rgb(50, 50, 50);
+  transition: all 0.3s;
+  &:hover {
+    text-decoration: none;
+    color: rgb(50, 50, 50);
+    opacity: 0.7;
+  }
+}
+
+.game-flex {
+  margin: 25px 0;
+  display: flex;
+}
+
+.game-btn {
+  padding: 15px 12px;
+  width: 150px;
+  text-align: center;
+}
+
+.game-margin-top {
+  margin-left: 7px;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.image-carousel-game {
+  margin: 0 auto;
+  object-fit: cover;
+}
+
+.game-carousel-title {
+  padding-left: 80px;
+  margin-bottom: 40px;
+}

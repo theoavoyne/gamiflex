@@ -24,9 +24,11 @@ class PagesController < ApplicationController
   end
 
   def suggestions
-    @suggestion = current_user.all_games_probability[0..1].map { |game_id, index| Game.find_with_igdb(game_id)}
+    @suggestion = current_user.all_games_probability[0..5].map { |game_id, index| Game.find_with_igdb(game_id)}
     @suggestion = nil if @suggestion == []
-    sleep 5
+    @probability = (current_user.probability(@suggestion[0]) / 2) + 0.5
+    @probability = @probability > 0.7 ? @probability : 0.71
+    sleep 3
   end
 
   def choose
