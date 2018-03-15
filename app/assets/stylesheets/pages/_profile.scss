@@ -1,4 +1,5 @@
 .profile-page {
+  width: 100vw;
   text-align: center;
   margin-bottom: 50px;
 }
@@ -65,11 +66,13 @@
 }
 
 .last-games-played {
+  width: 100vw;
   background-color: rgba(11,83,81,0.1);
 }
 
 .profile-row {
   padding: 50px;
+  margin: 0px;
   h2 {
     margin: -20px 0 50px 0;
     font-weight: bold;
