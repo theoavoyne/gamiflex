@@ -16,7 +16,6 @@ class PagesController < ApplicationController
     @nb_likes = current_user.states.where(state: "like").count
     @nb_dislikes = current_user.states.where(state: "dislike").count
     @last_games = current_user.games.last(3)
-    # @state_last_game = current_user.states.where(game: @last_game).take
     @date_creation = current_user.created_at.strftime("%B %d, %Y")
   end
 
@@ -26,7 +25,7 @@ class PagesController < ApplicationController
   def suggestions
     @suggestion = current_user.all_games_probability[0..1].map { |game_id, index| Game.find_with_igdb(game_id)}
     @suggestion = nil if @suggestion == []
-    sleep 5
+    sleep 3
   end
 
   def choose
