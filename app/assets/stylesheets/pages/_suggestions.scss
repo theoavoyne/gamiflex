@@ -117,6 +117,18 @@
   margin-bottom: 40px;
 }
 
+.row-suggestion-images {
+  margin: 0 30px;
+  display: flex;
+  justify-content: space-around;
+  overflow: scroll;
+  img {
+    max-width: 320px;
+    margin: 0 10px;
+    box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.15);
+  };
+}
+
 // ANIMATIONS
 
 #suggestion-game-image {

@@ -42,8 +42,12 @@
   <div id="suggestion-banner-bottom">
     <div style="width: 100%">
       <h3 class="game-carousel-title"><%= current_user.first_name.capitalize %>, you may also like (5)</h3>
-      <div class="row">
-        <%= render 'shared/carousel_suggestions' %>
+      <div class="row-suggestion-images">
+        <% @suggestion[1..5].each_with_index do |game,index|%>
+          <%= link_to game_path(game) do %>
+            <%= cl_image_tag(game.photo, height: 250, crop: "scale", class: "image-carousel-game") %>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
