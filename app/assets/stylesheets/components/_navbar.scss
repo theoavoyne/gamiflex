@@ -108,6 +108,16 @@
   z-index: 10;
 }
 
+#triangle {
+  position: absolute;
+  color: white;
+  font-size: 65px;
+  top: 25px;
+  left: -1px;
+  display: none;
+  z-index: 5;
+}
+
 .game-search {
   display: flex;
   padding: 5px 15px;
