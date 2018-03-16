@@ -18,8 +18,11 @@
 @import "carousel/carousel_item";
 
 
-*:focus {
-  border:0;
-  outline: none !important;
-  text-decoration: none;
+* {
+  &:focus {
+    border:0 !important;
+    outline: none !important;
+    text-decoration: none !important;
+    color: white !important;
+  }
 }
