@@ -16,3 +16,10 @@
 @import "pages/index";
 @import "carousel/carousel";
 @import "carousel/carousel_item";
+
+
+*:focus {
+  border:0;
+  outline: none !important;
+  text-decoration: none;
+}
