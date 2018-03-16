@@ -1,11 +1,11 @@
 <% if @suggestion %>
   <div class="row">
-    <div class="banner banner-even">
+    <div id="suggestion-banner-top">
       <div class="col-xs-12 col-md-8 flex-center">
-        <div class="banner-text">
-          <h3 class="game-title">
+        <div id="suggestion-top-text">
+          <h3 id="suggestion-game-title">
             We found your next game:
-            <%= link_to game_path(@suggestion.first), class: "suggestion-link" do %>
+            <%= link_to game_path(@suggestion.first), id: "suggestion-link" do %>
               <%= @suggestion.first.name %>
               <%= @suggestion.first.release_date ? "(#{@suggestion.first.release_date[0..3]})" : "" %>
             <% end %>
@@ -17,29 +17,28 @@
               you are <span id="counter-suggest" data-percent="<%= (@probability * 100).round %>">0</span>% likely to like this game.
             </span>
           </p>
-          <p class="game-summary"><%= @suggestion.first.summary %></p>
+          <p id="suggestion-game-summary"><%= @suggestion.first.summary %></p>
           <div class="flex-center">
-            <div class="game-data">
-              <div class="game-figure <%= @suggestion.first.recommend >= 0.5 ? "netflix-green" : "netflix-red" %>"><span id="counter-suggest2" data-percent="<%= (@suggestion.first.recommend * 100).round %>">0</span>%</div>
-              <div class="game-margin-top">Recommend</div>
+            <div class="suggestion-game-stat <%= @suggestion.first.recommend >= 0.5 ? "netflix-green" : "netflix-red" %>">
+              <span id="counter-suggest2" data-percent="<%= (@suggestion.first.recommend * 100).round %>">0</span>
+            % Recommend
             </div>
-            <div class="game-data">
-              <div class="game-figure"><%= @suggestion.first.reviews %></div>
-              <div class="game-margin-top"><%= @suggestion.first.reviews == 1 ? "Review" : "Reviews"%></div>
-            </div>
-            <%= link_to "See more", game_path(id: @suggestion.first.id), class: "main-btn game-btn" %>
+            <div class="suggestion-game-stat"><%= @suggestion.first.reviews %> <%= @suggestion.first.reviews == 1 ? "Review" : "Reviews"%></div>
+            <%= link_to "See more", game_path(id: @suggestion.first.id), {class: "main-btn", id: "suggestion-seemore-button"} %>
           </div>
         </div>
       </div>
       <div class="col-xs-12 col-md-4">
-        <div class="img-content">
-          <%= cl_image_tag(@suggestion.first.photo, height: 400, crop: "scale", class: "game-image") %>
+        <div id="suggestion-div-image">
+          <%= link_to game_path(@suggestion.first) do %>
+            <%= cl_image_tag(@suggestion.first.photo, height: 400, crop: "scale", id: "suggestion-game-image") %>
+          <% end %>
         </div>
       </div>
     </div>
-  <div class="banner banner-odd">
+  <div id="suggestion-banner-bottom">
     <div style="width: 100%">
-      <h3 class="game-carousel-title game-title"><%= current_user.first_name.capitalize %>, you may also like (5)</h3>
+      <h3 class="game-carousel-title"><%= current_user.first_name.capitalize %>, you may also like (5)</h3>
       <div class="row">
         <% @suggestion[1..5].each_with_index do |game, index|%>
           <div class="col-xs-12 col-sm-4 col-md-2 <%= index.zero? ? "col-md-offset-1" : "" %>">
