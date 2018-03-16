@@ -1,8 +1,8 @@
 // COMMON
 
 .flex-center {
-  margin: 25px 0;
   display: flex;
+  align-items: center;
 }
 
 .suggestion-green {
@@ -16,17 +16,29 @@
 
 // TOP BANNER
 
+
 #suggestion-banner-top {
   min-height: 600px;
   display: flex;
-  align-items: center;
   overflow: hidden;
   background-color: #96ACB7;
 }
 
+#suggestion-center-text {
+  height: 600px;
+  display: flex;
+  align-items: center;
+}
+
+#suggestion-center-image {
+  height: 600px;
+  display: flex;
+  align-items: center;
+  padding-left: 2vw;
+}
+
 #suggestion-game-image {
   max-width: 320px;
-  margin-left: 10%;
   box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.15);
   transition: all 0.3s;
   &:hover {
@@ -35,13 +47,11 @@
 }
 
 #suggestion-div-image {
-  display: flex;
-  align-items: center;
-  height: 600px;
+  position: relative;
 }
 
 #suggestion-top-text {
-  padding: 80px;
+  padding: 0 80px;
 }
 
 #suggestion-game-title {
