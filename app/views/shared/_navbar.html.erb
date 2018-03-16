@@ -15,6 +15,9 @@
             <i class="fas fa-search"></i>
           </div>
           <div id="search-box"></div>
+          <div id="triangle">
+            <i class="fas fa-caret-up"></i>
+          </div>
         </div>
       </div>
     </div>
@@ -53,6 +56,7 @@
 
   const search = document.getElementById('search');
   const searchBox = document.getElementById('search-box');
+  const triangle = document.getElementById('triangle');
 
   search.addEventListener("keyup", (event) => {
     if (event.target.value.length > 2) {
@@ -61,6 +65,7 @@
       .then((data) => {
         console.info(data);
         searchBox.style.display = "block";
+        triangle.style.display = "block";
         searchBox.innerHTML = "";
 
         let index;
@@ -111,6 +116,7 @@
       })
     } else if (event.target.value.length < 3) {
       searchBox.style.display = "none"
+      triangle.style.display = "none"
     };
   });
 
