@@ -18,11 +18,11 @@
 @import "carousel/carousel_item";
 
 
-* {
+img, h1, h2, h3, h4, p, div, span, a {
   &:focus {
     border:0 !important;
+    color: white !important;
     outline: none !important;
     text-decoration: none !important;
-    color: white !important;
   }
 }
