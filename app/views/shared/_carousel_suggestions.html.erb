@@ -1,0 +1,11 @@
+<div class="wraper-carousel-home-1">
+  <div class="autoplay-top-rated">
+    <% @suggestion[1..5].each_with_index do |game,index|%>
+        <%= link_to game_path(game) do %>
+          <%= cl_image_tag(game.photo, height: 250, crop: "scale", class: "image-carousel-game") %>
+        <% end %>
+    <% end %>
+  </div>
+</div>
+
+<%= javascript_pack_tag 'top_rated', media: 'all', 'data-turbolinks-track': 'reload' %>
