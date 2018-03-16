@@ -20,6 +20,7 @@ class GamesController < ApplicationController
         @probability = @state == "like" ? 1 : 0
       else
         @probability = (current_user.probability(@game) / 2) + 0.5
+        @probability += (1 - @probability) / 2
         @show_btn = true
       end
     end
