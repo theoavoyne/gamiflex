@@ -35,11 +35,11 @@ function operations() {
 let g = 0;
 function comparing() {
   comparingText.innerText = `${backtick(g)}`;
-  g += Math.floor(Math.random() * 3000);
+  g += Math.floor(Math.random() * 700);
 }
 
 function backtick(number) {
-  if (number > 3000) {
+  if (number > 1000) {
     return (new Intl.NumberFormat().format(number));
   }
 }
