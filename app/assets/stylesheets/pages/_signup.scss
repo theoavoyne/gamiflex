@@ -1,13 +1,14 @@
 .signup-background {
   display: flex;
+  justify-content: center;
   align-items: center;
   background-size: cover;
-  height: 120vh;
+  min-height: 70vh;
 }
 
 .signup-container {
-  width: 45vw;
-  margin: 50px auto;
+  min-width: 250px;
+  margin: 50px 30px;
   padding: 30px 40px;
   background-color: rgba(255,255,255, 0.85);
   border-radius: 10px;
