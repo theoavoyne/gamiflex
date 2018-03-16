@@ -80,7 +80,6 @@ function killInterval() {
 
 intervaux();
 
-window.intervaux = intervaux;
 
 let loadingContent = document.getElementById('loading-container');
 let button = document.querySelector('.run-loading');
@@ -103,3 +102,5 @@ if (button2) {
 document.addEventListener("turbolinks:render", function(){
   killInterval();
 });
+
+window.intervaux = intervaux;
