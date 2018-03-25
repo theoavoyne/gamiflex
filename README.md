@@ -2,6 +2,10 @@
 
 Gamiflex is a powerful tool for video game suggestion. Based on all the games you played so far, Gamiflex is able to tell you what game you should play next. Gamiflex is also able to determine precisely how likely you are to like a game.
 
+## Website
+
+[www.gamiflex.com](http://www.gamiflex.com/)
+
 ## Built with
 
 * [Ruby on Rails](http://rubyonrails.org/)
