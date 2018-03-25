@@ -18,4 +18,4 @@ Gamiflex is a powerful tool for video game suggestion. Based on all the games yo
 
 ## Acknowledgments
 
-* **Roland Jaccard** for his work on similarity coefficient
+* **Roland Jaccard** for his work on similarity coefficient.
