@@ -1,6 +1,6 @@
 # Gamiflex
 
-Gamiflex is a powerful tool for video game suggestion. Based on all the games you played so far, Gamiflex is able to tell you what game you should play next. Gamiflex is also able to determine precisely how likely you are to like a game.
+Gamiflex is an application that provides the users with automatic predictions about video games they might like by cross-referencing the preferences of all users. It relies on a memory-based collaborative filtering algorithm.
 
 ## Website
 
